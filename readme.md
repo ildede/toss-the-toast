@@ -1,7 +1,7 @@
 # Toss the Toast
 > A game developed for the #Clujtronic2020.
 
-![License](https://img.shields.io/badge/license-MIT-green)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/03c4cdb7-d11b-4a97-a3e9-90d516d14edd/deploy-status)](https://app.netlify.com/sites/hopeful-villani-39809c/deploys)
 
 ## Prerequisites
 
