@@ -1,30 +1,23 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from "~/main";
+import {ARROW, BACKGROUND, PARTICLE, TOAST} from "~/const/Assets";
 
-export default class MainScene extends Phaser.Scene
-{
+export const MAIN_SCENE = 'MainScene'
+export default class MainScene extends Phaser.Scene {
+
     private emitter!: Phaser.GameObjects.Particles.ParticleEmitter;
     private arrow!: Phaser.GameObjects.Image;
     private toast: Phaser.Physics.Arcade.Image | undefined;
 
-    constructor()
-    {
-        super('main-scene')
+    constructor() {
+        super({ key: MAIN_SCENE })
     }
 
-    preload()
-    {
-        this.load.image('background', 'background.png')
-        this.load.image('toast', 'toast.png')
-        this.load.image('red', 'red.png')
-        this.load.image('arrow', 'arrow.png')
-    }
-
-    create()
-    {
-        this.add.image(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, 'background').setScale(1.6,1.6)
-
-        this.arrow = this.add.image(DEFAULT_WIDTH*0.15, DEFAULT_HEIGHT*0.6, 'arrow').setScale(0.4, 0.4)
+    create() {
+        this.add.image(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, BACKGROUND)
+            .setScale(2,2)
+        this.arrow = this.add.image(DEFAULT_WIDTH*0.15, DEFAULT_HEIGHT*0.6, ARROW)
+            .setScale(0.4, 0.4)
     }
 
     update(time: number, delta: number) {
@@ -39,7 +32,7 @@ export default class MainScene extends Phaser.Scene
             const cursor = pointer;
 
             if (!this.toast || (this.toast.body.velocity.y == 0 && this.toast.body.velocity.x == 0)) {
-                const particles = this.add.particles('red')
+                const particles = this.add.particles(PARTICLE)
                 this.emitter = particles.createEmitter({
                     speed: 70,
                     scale: { start: 1, end: 0 },
@@ -48,7 +41,7 @@ export default class MainScene extends Phaser.Scene
                 if (this.toast) {
                     this.toast.destroy()
                 }
-                this.toast = this.physics.add.image(this.arrow.x, this.arrow.y, 'toast').setScale(0.4, 0.4)
+                this.toast = this.physics.add.image(this.arrow.x, this.arrow.y, TOAST).setScale(0.4, 0.4)
                 this.toast.setCollideWorldBounds(true, 0, 0)
                 this.toast.setAngularVelocity(200)
 
