@@ -12,5 +12,6 @@ export default class Plate extends Phaser.Physics.Arcade.Sprite {
 
         this.setScale(0.30, 0.30)
         this.refreshBody()
+        this.setSize(this.body.width/2, this.body.height/2);
     }
 }
