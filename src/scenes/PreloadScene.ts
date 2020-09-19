@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import {ARROW, BACKGROUND, PARTICLE, TOAST} from "~/const/Assets";
+import {ARROW, BACKGROUND, PARTICLE, SPEED_EFFECT, TOAST} from "~/const/Assets";
 
 export const PRELOAD_SCENE = 'PreloadScene'
 
@@ -38,6 +38,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image(TOAST, 'assets/toast.png')
         this.load.image(PARTICLE, 'assets/red-particle.png')
         this.load.image(ARROW, 'assets/arrow.png')
+        this.load.image(SPEED_EFFECT, 'assets/speed-effect.jpg')
     }
 
     create() {

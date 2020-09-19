@@ -18,10 +18,10 @@ export default class MainScene extends Phaser.Scene {
     }
 
     create() {
-        this.cameras.main.setBounds(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT)
+        this.cameras.main.setBounds(-DEFAULT_WIDTH, -DEFAULT_HEIGHT, DEFAULT_WIDTH*2, DEFAULT_HEIGHT*2)
 
         this.add.image(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, BACKGROUND)
-            .setScale(1.6,1.6)
+            .setScale(1.65,1.65)
         this.startingPoint = this.add.image(this.START_X, this.START_Y, ARROW)
             .setScale(0.4, 0.4)
         this.toast = new Toast(this).setVisible(false)
@@ -48,11 +48,11 @@ export default class MainScene extends Phaser.Scene {
                 this.toast = new Toast(this)
 
                 const cam = this.cameras.main
-                cam.pan(this.START_X, this.START_Y, 1000)
+                cam.pan(this.START_X, this.START_Y, 500, 'Sine.easeInOut')
 
                 const cursorX = pointer.x
                 const cursorY = pointer.y
-                cam.zoomTo(4, 1500, 'Sine.easeInOut', true,
+                cam.zoomTo(5, 600, 'Sine.easeInOut', true,
                     (camera: Phaser.Cameras.Scene2D.Camera, progress: number) => {
                         if (progress == 1) {
                             camera.startFollow(this.toast)
@@ -60,7 +60,7 @@ export default class MainScene extends Phaser.Scene {
                             setTimeout(() => {
                                 this.scene.pause();
                                 this.scene.launch(SPINNING_SCENE, this.toast);
-                            }, 700)
+                            }, 600)
                         }
                     }, this)
 
