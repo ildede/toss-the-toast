@@ -71,7 +71,7 @@ export default class MainScene extends Phaser.Scene {
 
                 const cursorX = pointer.x
                 const cursorY = pointer.y
-                cam.zoomTo(1, 500, 'Sine.easeInOut', true,
+                cam.zoomTo(5, 500, 'Sine.easeInOut', true,
                     (camera: Phaser.Cameras.Scene2D.Camera, progress: number) => {
                         if (progress == 1) {
                             camera.startFollow(this.toast)
