@@ -8,7 +8,7 @@ export default class Toast extends Phaser.Physics.Arcade.Sprite {
 
         scene.add.existing(this)
 
-        this.setScale(0.25, 0.25)
+        this.setScale(0.20, 0.20)
     }
 
     toss(cursorX: number, cursorY: number) {
