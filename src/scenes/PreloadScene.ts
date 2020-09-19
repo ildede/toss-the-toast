@@ -3,7 +3,7 @@ import {
     ARROW,
     BACKGROUND,
     LOST_SFX,
-    PLATE,
+    PLATE, SLIP_SFX,
     SPEED_BG,
     SPEED_BG_ANIM,
     SPLAT_SFX,
@@ -58,6 +58,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.audio(SPLAT_SFX, 'music/splatSFX.mp3')
         this.load.audio(WIN_SFX, 'music/winSFX.mp3')
         this.load.audio(WOOSH_SFX, 'music/wooshSFX.mp3')
+        this.load.audio(SLIP_SFX, 'music/slipSFX.mp3')
     }
 
     create() {

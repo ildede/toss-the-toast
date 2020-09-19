@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
-import {ARROW, BACKGROUND, LOST_SFX, SPLAT_SFX, WIN_SFX} from '~/const/Assets'
+import {ARROW, BACKGROUND, LOST_SFX, SLIP_SFX, SPLAT_SFX, WIN_SFX} from '~/const/Assets'
 import Toast from '~/objects/Toast'
 import {SPINNING_SCENE} from '~/scenes/SpinningScene'
 import Plate from '~/objects/Plate'
@@ -69,6 +69,7 @@ export default class MainScene extends Phaser.Scene {
                         if (progress == 1) {
                             camera.startFollow(this.toast)
                             this.toast.toss(cursorX, cursorY)
+                            this.sound.play(SLIP_SFX)
                             setTimeout(() => {
                                 this.scene.pause()
                                 this.scene.launch(SPINNING_SCENE, this.toast)
