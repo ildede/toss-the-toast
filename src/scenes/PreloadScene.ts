@@ -1,19 +1,29 @@
 import Phaser from 'phaser'
 import {
     ARROW,
-    BACKGROUND, COLA, FAIL_1, FAIL_2, IDLE_BGM,
+    BACKGROUND,
+    COLA,
+    FAIL_1,
+    FAIL_2,
+    IDLE_BGM,
     LOST_SFX,
-    PLATE, SLIP_SFX,
+    PLATE,
+    SLIP_SFX,
     SPEED_BG,
-    SPEED_BG_ANIM, SPIN_BGM, SPLAT,
-    SPLAT_SFX, STRAW,
+    SPEED_BG_ANIM,
+    SPIN_BGM,
+    SPLAT,
+    SPLAT_SFX,
+    STRAW,
     TOAST,
-    TOAST_ANIM, WIN_1, WIN_2, WIN_3,
+    TOAST_ANIM,
+    WIN_1,
+    WIN_2,
+    WIN_3,
     WIN_SFX,
-    WOOSH_SFX, WTF
+    WOOSH_SFX,
+    WTF
 } from '~/const/Assets'
-
-export const PRELOAD_SCENE = 'PreloadScene'
 
 const defaultConfig = (width: number, height: number) => {
     return {
@@ -26,6 +36,7 @@ const defaultConfig = (width: number, height: number) => {
     }
 }
 
+export const PRELOAD_SCENE = 'PreloadScene'
 export default class PreloadScene extends Phaser.Scene {
 
     constructor() {
@@ -75,8 +86,11 @@ export default class PreloadScene extends Phaser.Scene {
     }
 
     create() {
+        import('./SplashScene').then(splashScene => {
+            this.scene.add(splashScene.SPLASH_SCENE, splashScene.default, true)
+        })
         import('./MainScene').then(mainScene => {
-            this.scene.add(mainScene.MAIN_SCENE, mainScene.default, true)
+            this.scene.add(mainScene.MAIN_SCENE, mainScene.default, false)
         })
         import('./SpinningScene').then(spinningScene => {
             this.scene.add(spinningScene.SPINNING_SCENE, spinningScene.default, false)

@@ -25,7 +25,7 @@ export default class SpinningScene extends Phaser.Scene {
         new SpeedBackground(this)
         const straw = this.add.image(DEFAULT_WIDTH/2, DEFAULT_HEIGHT*0.1, STRAW)
         const cola = this.add.image(DEFAULT_WIDTH/2, DEFAULT_HEIGHT*0.1, COLA)
-        const fillStraw = this.tweens.add({
+        this.tweens.add({
             targets: cola,
             displayWidth: { start: 0, to: straw.width*1.5-30 },
             ease: 'Linear',
