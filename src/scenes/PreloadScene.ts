@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import {ARROW, BACKGROUND, SPEED_BG, SPEED_BG_ANIM, TOAST, TOAST_ANIM} from '~/const/Assets'
+import {ARROW, BACKGROUND, PLATE, SPEED_BG, SPEED_BG_ANIM, TOAST, TOAST_ANIM} from '~/const/Assets'
 
 export const PRELOAD_SCENE = 'PreloadScene'
 
@@ -35,6 +35,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.on('complete', () => [loadingText, assetText].forEach(e => e.destroy()))
 
         this.load.image(BACKGROUND, 'assets/background.png')
+        this.load.image(PLATE, 'assets/plate.png')
         this.load.atlas(TOAST, 'assets/toastegg/toastegg.png', 'assets/toastegg/toastegg_atlas.json')
         this.load.animation(TOAST_ANIM, 'assets/toastegg/toastegg_anim.json')
         this.load.atlas(SPEED_BG, 'assets/speedbg/speedbg.png', 'assets/speedbg/speedbg_atlas.json')

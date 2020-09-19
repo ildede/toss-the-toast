@@ -11,7 +11,6 @@ export default class SpeedBackground extends Phaser.GameObjects.Sprite {
         scene.add.existing(this)
         this.setScale(1.6, 1.6)
 
-        // this.setTexture(SPEED_BG, 'speedbg1')
         this.anims.play('speedRun', true, 1)
     }
 }

@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
-import {ARROW, BACKGROUND} from '~/const/Assets'
+import {ARROW, BACKGROUND, PLATE} from '~/const/Assets'
 import Toast from '~/objects/Toast'
 import {SPINNING_SCENE} from '~/scenes/SpinningScene'
 
@@ -18,12 +18,16 @@ export default class MainScene extends Phaser.Scene {
     }
 
     create() {
-        this.cameras.main.setBounds(-DEFAULT_WIDTH, -DEFAULT_HEIGHT, DEFAULT_WIDTH*2, DEFAULT_HEIGHT*2)
+        this.cameras.main.setBounds(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT)
 
         this.add.image(DEFAULT_WIDTH/2+100, DEFAULT_HEIGHT/2+100, BACKGROUND)
             .setScale(2.4,2.4)
         this.startingPoint = this.add.image(this.START_X, this.START_Y, ARROW)
             .setScale(0.4, 0.4)
+
+        this.add.sprite(DEFAULT_WIDTH*0.735, DEFAULT_HEIGHT*0.6, PLATE)
+            .setScale(0.30, 0.30)
+
         this.toast = new Toast(this).setVisible(false)
 
         this.events.on('resume', (system, data: Toast) => {
