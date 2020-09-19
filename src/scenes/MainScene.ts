@@ -7,8 +7,8 @@ import {SPINNING_SCENE} from '~/scenes/SpinningScene'
 export const MAIN_SCENE = 'MainScene'
 export default class MainScene extends Phaser.Scene {
 
-    readonly START_X: number = DEFAULT_WIDTH * 0.25
-    readonly START_Y: number = DEFAULT_HEIGHT * 0.70
+    readonly START_X: number = DEFAULT_WIDTH * 0.20
+    readonly START_Y: number = DEFAULT_HEIGHT * 0.55
 
     private startingPoint!: Phaser.GameObjects.Image
     private toast!: Toast
@@ -20,8 +20,8 @@ export default class MainScene extends Phaser.Scene {
     create() {
         this.cameras.main.setBounds(-DEFAULT_WIDTH, -DEFAULT_HEIGHT, DEFAULT_WIDTH*2, DEFAULT_HEIGHT*2)
 
-        this.add.image(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, BACKGROUND)
-            .setScale(2.1,2.1)
+        this.add.image(DEFAULT_WIDTH/2+100, DEFAULT_HEIGHT/2+100, BACKGROUND)
+            .setScale(2.4,2.4)
         this.startingPoint = this.add.image(this.START_X, this.START_Y, ARROW)
             .setScale(0.4, 0.4)
         this.toast = new Toast(this).setVisible(false)
@@ -47,11 +47,11 @@ export default class MainScene extends Phaser.Scene {
                 this.toast = new Toast(this)
 
                 const cam = this.cameras.main
-                cam.pan(this.START_X, this.START_Y, 500, 'Sine.easeInOut')
+                cam.pan(this.START_X, this.START_Y, 400, 'Sine.easeInOut')
 
                 const cursorX = pointer.x
                 const cursorY = pointer.y
-                cam.zoomTo(5, 600, 'Sine.easeInOut', true,
+                cam.zoomTo(5, 500, 'Sine.easeInOut', true,
                     (camera: Phaser.Cameras.Scene2D.Camera, progress: number) => {
                         if (progress == 1) {
                             camera.startFollow(this.toast)
