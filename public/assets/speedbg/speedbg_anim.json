@@ -1,0 +1,52 @@
+{
+    "anims": [
+        {
+            "key": "speedRun",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 15,
+            "frames": [
+                {
+                    "key": "speedbg",
+                    "frame": "speedbg1"
+                },
+                {
+                    "key": "speedbg",
+                    "frame": "speedbg2"
+                },
+                {
+                    "key": "speedbg",
+                    "frame": "speedbg3"
+                },
+                {
+                    "key": "speedbg",
+                    "frame": "speedbg4"
+                },
+                {
+                    "key": "speedbg",
+                    "frame": "speedbg5"
+                },
+                {
+                    "key": "speedbg",
+                    "frame": "speedbg6"
+                },
+                {
+                    "key": "speedbg",
+                    "frame": "speedbg7"
+                },
+                {
+                    "key": "speedbg",
+                    "frame": "speedbg8"
+                },
+                {
+                    "key": "speedbg",
+                    "frame": "speedbg9"
+                },
+                {
+                    "key": "speedbg",
+                    "frame": "speedbg10"
+                }
+            ]
+        }
+    ]
+}

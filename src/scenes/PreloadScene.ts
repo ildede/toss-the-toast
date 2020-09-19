@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import {ARROW, BACKGROUND, PARTICLE, SPEED_EFFECT, TOAST, TOAST_ANIM} from '~/const/Assets'
+import {ARROW, BACKGROUND, SPEED_BG, SPEED_BG_ANIM, TOAST, TOAST_ANIM} from '~/const/Assets'
 
 export const PRELOAD_SCENE = 'PreloadScene'
 
@@ -37,22 +37,18 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image(BACKGROUND, 'assets/background.png')
         this.load.atlas(TOAST, 'assets/toastegg/toastegg.png', 'assets/toastegg/toastegg_atlas.json')
         this.load.animation(TOAST_ANIM, 'assets/toastegg/toastegg_anim.json')
-        this.load.image(PARTICLE, 'assets/red-particle.png')
+        this.load.atlas(SPEED_BG, 'assets/speedbg/speedbg.png', 'assets/speedbg/speedbg_atlas.json')
+        this.load.animation(SPEED_BG_ANIM, 'assets/speedbg/speedbg_anim.json')
+
         this.load.image(ARROW, 'assets/arrow.png')
-        this.load.image(SPEED_EFFECT, 'assets/speed-effect.jpg')
     }
 
     create() {
-        const someCondition = true
-        if (someCondition) {
-            import('./MainScene').then(mainScene => {
-                this.scene.add(mainScene.MAIN_SCENE, mainScene.default, true)
-            })
-            import('./SpinningScene').then(spinningScene => {
-                this.scene.add(spinningScene.SPINNING_SCENE, spinningScene.default, false)
-            })
-        } else {
-            console.log('The MainScene class will not even be loaded by the browser')
-        }
+        import('./MainScene').then(mainScene => {
+            this.scene.add(mainScene.MAIN_SCENE, mainScene.default, true)
+        })
+        import('./SpinningScene').then(spinningScene => {
+            this.scene.add(spinningScene.SPINNING_SCENE, spinningScene.default, false)
+        })
     }
 }

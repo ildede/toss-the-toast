@@ -1,9 +1,9 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
-import {SPEED_EFFECT} from '~/const/Assets'
 import {MAIN_SCENE} from '~/scenes/MainScene'
 import Toast from '~/objects/Toast'
 import SpinningToast from '~/objects/SpinningToast'
+import SpeedBackground from '~/objects/SpeedBackground';
 
 export const SPINNING_SCENE = 'SpinningScene'
 export default class SpinningScene extends Phaser.Scene {
@@ -14,9 +14,7 @@ export default class SpinningScene extends Phaser.Scene {
     }
 
     create(toast: Toast) {
-        this.add.image(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, SPEED_EFFECT)
-            .setScale(3.5, 2.5)
-
+        new SpeedBackground(this)
         this.spinningToast = new SpinningToast(this, toast)
 
         const infoText = this.make.text({
