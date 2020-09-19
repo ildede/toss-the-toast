@@ -13,3 +13,6 @@ export const WOOSH_SFX = 'wooshSFX'
 export const SLIP_SFX = 'slipSFX'
 export const IDLE_BGM = 'idleBGM'
 export const SPIN_BGM = 'spinBGM'
+
+export const STRAW = 'straw'
+export const COLA = 'cola'

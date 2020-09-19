@@ -1,12 +1,12 @@
 import Phaser from 'phaser'
 import {
     ARROW,
-    BACKGROUND, IDLE_BGM,
+    BACKGROUND, COLA, IDLE_BGM,
     LOST_SFX,
     PLATE, SLIP_SFX,
     SPEED_BG,
     SPEED_BG_ANIM, SPIN_BGM,
-    SPLAT_SFX,
+    SPLAT_SFX, STRAW,
     TOAST,
     TOAST_ANIM,
     WIN_SFX,
@@ -52,6 +52,9 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.animation(TOAST_ANIM, 'assets/toastegg/toastegg_anim.json')
         this.load.atlas(SPEED_BG, 'assets/speedbg/speedbg.png', 'assets/speedbg/speedbg_atlas.json')
         this.load.animation(SPEED_BG_ANIM, 'assets/speedbg/speedbg_anim.json')
+
+        this.load.image(STRAW, 'assets/straw.png')
+        this.load.image(COLA, 'assets/cola.png')
 
         this.load.image(ARROW, 'assets/arrow.png')
         this.load.audio(LOST_SFX, 'music/lostSFX.mp3')
