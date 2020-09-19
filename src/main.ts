@@ -1,6 +1,5 @@
 import Phaser from 'phaser'
 import PreloadScene from "~/scenes/PreloadScene";
-import SpinningScene from "~/scenes/SpinningScene";
 
 export const DEFAULT_WIDTH = 1920
 export const DEFAULT_HEIGHT = 1080
