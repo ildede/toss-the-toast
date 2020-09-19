@@ -7,7 +7,7 @@ import {SPINNING_SCENE} from "~/scenes/SpinningScene";
 export const MAIN_SCENE = 'MainScene'
 export default class MainScene extends Phaser.Scene {
 
-    readonly START_X: number = DEFAULT_WIDTH * 0.22
+    readonly START_X: number = DEFAULT_WIDTH * 0.25
     readonly START_Y: number = DEFAULT_HEIGHT * 0.5
 
     private startingPoint!: Phaser.GameObjects.Image
