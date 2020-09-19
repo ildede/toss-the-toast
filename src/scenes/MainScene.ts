@@ -1,15 +1,16 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from "~/main";
 import {ARROW, BACKGROUND, TOAST} from "~/const/Assets";
+import Toast from "~/objects/Toast";
 
 export const MAIN_SCENE = 'MainScene'
 export default class MainScene extends Phaser.Scene {
 
-    private readonly START_X: number = DEFAULT_WIDTH * 0.15;
-    private readonly START_Y: number = DEFAULT_HEIGHT * 0.6;
+    readonly START_X: number = DEFAULT_WIDTH * 0.15;
+    readonly START_Y: number = DEFAULT_HEIGHT * 0.6;
 
     private startingPoint!: Phaser.GameObjects.Image;
-    private toast!: Phaser.Physics.Arcade.Image;
+    private toast!: Toast;
 
     constructor() {
         super({ key: MAIN_SCENE })
@@ -40,30 +41,26 @@ export default class MainScene extends Phaser.Scene {
                 }
 
                 this.startingPoint.destroy()
-                this.startingPoint = this.add.image(this.START_X, this.START_Y, TOAST)
-                    .setScale(0.4, 0.4)
 
+                this.toast = new Toast(this)
                 const cam = this.cameras.main;
                 cam.pan(this.START_X, this.START_Y, 1000)
 
                 const cursorX = pointer.x;
                 const cursorY = pointer.y;
-                cam.zoomTo(1, 1500, 'Sine.easeInOut', true, (camera, progress, x, y) => {
-                    if (progress == 1) {
-                        this.toast = this.physics.add.image(this.START_X, this.START_Y, TOAST).setScale(0.4, 0.4)
-                        this.toast.setCollideWorldBounds(true, 0, 0)
-                        this.startingPoint.destroy()
-                        camera.startFollow(this.toast)
-                        this.physics.moveTo(this.toast, cursorX, cursorY, 1000);
-                        this.toast.setAngularVelocity(300)
-                    }
-                }, this)
+                cam.zoomTo(4, 1500, 'Sine.easeInOut', true,
+                    (camera: Phaser.Cameras.Scene2D.Camera, progress: number) => {
+                        if (progress == 1) {
+                            camera.startFollow(this.toast)
+                            this.toast.toss(cursorX, cursorY)
+                        }
+                    }, this)
 
             }
         }, this);
 
         if (this.toast?.body?.velocity.y == 0) {
-            this.toast.setAngularVelocity(0)
+            this.toast.land()
             const cam = this.cameras.main;
             cam.stopFollow()
             cam.zoomTo(1)
