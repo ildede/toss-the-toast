@@ -1,16 +1,16 @@
 import Phaser from 'phaser'
 import {
     ARROW,
-    BACKGROUND, COLA, IDLE_BGM,
+    BACKGROUND, COLA, FAIL_1, FAIL_2, IDLE_BGM,
     LOST_SFX,
     PLATE, SLIP_SFX,
     SPEED_BG,
-    SPEED_BG_ANIM, SPIN_BGM,
+    SPEED_BG_ANIM, SPIN_BGM, SPLAT,
     SPLAT_SFX, STRAW,
     TOAST,
-    TOAST_ANIM,
+    TOAST_ANIM, WIN_1, WIN_2, WIN_3,
     WIN_SFX,
-    WOOSH_SFX
+    WOOSH_SFX, WTF
 } from '~/const/Assets'
 
 export const PRELOAD_SCENE = 'PreloadScene'
@@ -64,6 +64,14 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.audio(SLIP_SFX, 'music/slipSFX.mp3')
         this.load.audio(IDLE_BGM, 'music/idleBGM.mp3')
         this.load.audio(SPIN_BGM, 'music/spinningBGM.mp3')
+
+        this.load.image(WIN_1, 'assets/straw.png')
+        this.load.image(WIN_2, 'assets/cola.png')
+        this.load.image(WIN_3, 'assets/straw.png')
+        this.load.image(FAIL_1, 'assets/cola.png')
+        this.load.image(FAIL_2, 'assets/straw.png')
+        this.load.image(SPLAT, 'assets/cola.png')
+        this.load.image(WTF, 'assets/straw.png')
     }
 
     create() {
