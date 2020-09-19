@@ -3,6 +3,7 @@ import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
 import {ARROW, BACKGROUND, PLATE} from '~/const/Assets'
 import Toast from '~/objects/Toast'
 import {SPINNING_SCENE} from '~/scenes/SpinningScene'
+import Plate from "~/objects/Plate";
 
 export const MAIN_SCENE = 'MainScene'
 export default class MainScene extends Phaser.Scene {
@@ -12,6 +13,7 @@ export default class MainScene extends Phaser.Scene {
 
     private startingPoint!: Phaser.GameObjects.Image
     private toast!: Toast
+    private plate!: Plate
 
     constructor() {
         super({ key: MAIN_SCENE })
@@ -25,17 +27,12 @@ export default class MainScene extends Phaser.Scene {
         this.startingPoint = this.add.image(this.START_X, this.START_Y, ARROW)
             .setScale(0.4, 0.4)
 
-        this.add.sprite(DEFAULT_WIDTH*0.735, DEFAULT_HEIGHT*0.6, PLATE)
-            .setScale(0.30, 0.30)
-
+        this.plate = new Plate(this)
         this.toast = new Toast(this).setVisible(false)
 
         this.events.on('resume', (system, data: Toast) => {
             this.toast = data
         })
-    }
-
-    update(time: number, delta: number) {
 
         this.input.on('pointermove', (pointer) => {
             const angle = Phaser.Math.Angle.Between(this.START_X, this.START_Y, pointer.x, pointer.y)
@@ -69,7 +66,9 @@ export default class MainScene extends Phaser.Scene {
 
             }
         }, this)
+    }
 
+    update(time: number, delta: number) {
         if (this.toast?.body?.velocity.y == 0 && !this.startingPoint.visible) {
             this.toast.land()
             const cam = this.cameras.main
