@@ -14,12 +14,20 @@ export default class Toast extends Phaser.Physics.Arcade.Sprite {
     toss(cursorX: number, cursorY: number) {
         this.scene.physics.add.existing(this)
         this.setCollideWorldBounds(true, 0, 0)
+        this.setBodySize(300,200,true)
 
         this.anims.play('spinToastEgg')
-        this.scene.physics.moveTo(this, cursorX, cursorY, 1000)
+        this.scene.physics.moveTo(this, cursorX, cursorY, 900)
     }
 
     land() {
         this.anims.stop()
+        this.setVelocity(0, 0)
+        this.body['setAllowGravity'](false)
+    }
+
+    splat() {
+        this.anims.stop()
+        this.setVelocity(0, 0)
     }
 }

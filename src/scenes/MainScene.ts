@@ -1,9 +1,13 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
-import {ARROW, BACKGROUND, PLATE} from '~/const/Assets'
+import {ARROW, BACKGROUND} from '~/const/Assets'
 import Toast from '~/objects/Toast'
 import {SPINNING_SCENE} from '~/scenes/SpinningScene'
 import Plate from "~/objects/Plate";
+import BarCounter from "~/objects/BarCounter";
+import Floor from "~/objects/Floor";
+import Wall from "~/objects/Wall";
+import GameObjectWithBody = Phaser.Types.Physics.Arcade.GameObjectWithBody;
 
 export const MAIN_SCENE = 'MainScene'
 export default class MainScene extends Phaser.Scene {
@@ -14,6 +18,7 @@ export default class MainScene extends Phaser.Scene {
     private startingPoint!: Phaser.GameObjects.Image
     private toast!: Toast
     private plate!: Plate
+    private staticGroup!: Phaser.Physics.Arcade.StaticGroup;
 
     constructor() {
         super({ key: MAIN_SCENE })
@@ -28,6 +33,12 @@ export default class MainScene extends Phaser.Scene {
             .setScale(0.4, 0.4)
 
         this.plate = new Plate(this)
+        this.staticGroup = this.physics.add.staticGroup([
+            new BarCounter(this),
+            new Floor(this),
+            new Wall(this)
+        ]);
+
         this.toast = new Toast(this).setVisible(false)
 
         this.events.on('resume', (system, data: Toast) => {
@@ -52,7 +63,7 @@ export default class MainScene extends Phaser.Scene {
 
                 const cursorX = pointer.x
                 const cursorY = pointer.y
-                cam.zoomTo(5, 500, 'Sine.easeInOut', true,
+                cam.zoomTo(1, 500, 'Sine.easeInOut', true,
                     (camera: Phaser.Cameras.Scene2D.Camera, progress: number) => {
                         if (progress == 1) {
                             camera.startFollow(this.toast)
@@ -77,6 +88,14 @@ export default class MainScene extends Phaser.Scene {
             this.startingPoint.setVisible(true)
         }
 
+        this.physics.overlap(this.plate, this.toast,
+            () => {
+                this.toast.land()
+        })
+
+        this.physics.world.collide(this.toast, this.staticGroup, (a: GameObjectWithBody) => {
+            (a as Toast).splat()
+        });
         super.update(time, delta)
     }
 }
