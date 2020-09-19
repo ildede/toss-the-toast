@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import {TOAST} from '~/const/Assets'
+import {TOAST, WOOSH_SFX} from '~/const/Assets'
 import SpinningScene from '~/scenes/SpinningScene'
 import Toast from '~/objects/Toast'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
@@ -13,5 +13,7 @@ export default class SpinningToast extends Phaser.GameObjects.Sprite {
         this.setScale(toast.scaleX*5, toast.scaleY*5)
 
         this.anims.play('spinToastEgg', true, toast.anims.currentFrame.index)
+
+        this.on('animationrepeat', () => this.scene.sound.play(WOOSH_SFX))
     }
 }

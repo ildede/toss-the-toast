@@ -9,7 +9,8 @@ import {
     SPLAT_SFX,
     TOAST,
     TOAST_ANIM,
-    WIN_SFX
+    WIN_SFX,
+    WOOSH_SFX
 } from '~/const/Assets'
 
 export const PRELOAD_SCENE = 'PreloadScene'
@@ -56,6 +57,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.audio(LOST_SFX, 'music/lostSFX.mp3')
         this.load.audio(SPLAT_SFX, 'music/splatSFX.mp3')
         this.load.audio(WIN_SFX, 'music/winSFX.mp3')
+        this.load.audio(WOOSH_SFX, 'music/wooshSFX.mp3')
     }
 
     create() {

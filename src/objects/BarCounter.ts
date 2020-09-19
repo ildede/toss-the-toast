@@ -1,7 +1,7 @@
 import Phaser from 'phaser'
 import {PLATE} from '~/const/Assets'
 import MainScene from '~/scenes/MainScene'
-import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from "~/main";
+import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
 
 export default class BarCounter extends Phaser.Physics.Arcade.Sprite {
     constructor(scene: MainScene) {
@@ -11,6 +11,6 @@ export default class BarCounter extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this)
         scene.physics.add.existing(this, true)
 
-        this.setSize(260, 400);
+        this.setSize(260, 400)
     }
 }

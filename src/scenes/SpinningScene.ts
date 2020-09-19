@@ -3,7 +3,7 @@ import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
 import {MAIN_SCENE} from '~/scenes/MainScene'
 import Toast from '~/objects/Toast'
 import SpinningToast from '~/objects/SpinningToast'
-import SpeedBackground from '~/objects/SpeedBackground';
+import SpeedBackground from '~/objects/SpeedBackground'
 
 export const SPINNING_SCENE = 'SpinningScene'
 export default class SpinningScene extends Phaser.Scene {
@@ -37,10 +37,12 @@ export default class SpinningScene extends Phaser.Scene {
 
         this.input.keyboard.on('keydown', (event: KeyboardEvent) => {
             if (event.key === 'j') {
-                this.spinningToast.anims.msPerFrame -= 10
+                if (this.spinningToast.anims.msPerFrame > 30) {
+                    this.spinningToast.anims.msPerFrame -= 5
+                }
             }
             if (event.key === 'h') {
-                this.spinningToast.anims.msPerFrame += 10
+                this.spinningToast.anims.msPerFrame += 5
             }
         })
     }

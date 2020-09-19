@@ -1,7 +1,7 @@
 import Phaser from 'phaser'
 import {PLATE} from '~/const/Assets'
 import MainScene from '~/scenes/MainScene'
-import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from "~/main";
+import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
 
 export default class Plate extends Phaser.Physics.Arcade.Sprite {
     constructor(scene: MainScene) {
@@ -12,6 +12,6 @@ export default class Plate extends Phaser.Physics.Arcade.Sprite {
 
         this.setScale(0.30, 0.30)
         this.refreshBody()
-        this.setSize(this.body.width/2, this.body.height/2);
+        this.setSize(this.body.width/2, this.body.height/2)
     }
 }

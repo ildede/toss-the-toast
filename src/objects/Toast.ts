@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import {LOST_SFX, TOAST} from '~/const/Assets'
+import {TOAST} from '~/const/Assets'
 import MainScene from '~/scenes/MainScene'
 
 export default class Toast extends Phaser.Physics.Arcade.Sprite {

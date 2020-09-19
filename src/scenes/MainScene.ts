@@ -3,11 +3,11 @@ import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
 import {ARROW, BACKGROUND, LOST_SFX, SPLAT_SFX, WIN_SFX} from '~/const/Assets'
 import Toast from '~/objects/Toast'
 import {SPINNING_SCENE} from '~/scenes/SpinningScene'
-import Plate from "~/objects/Plate";
-import BarCounter from "~/objects/BarCounter";
-import Floor from "~/objects/Floor";
-import Wall from "~/objects/Wall";
-import GameObjectWithBody = Phaser.Types.Physics.Arcade.GameObjectWithBody;
+import Plate from '~/objects/Plate'
+import BarCounter from '~/objects/BarCounter'
+import Floor from '~/objects/Floor'
+import Wall from '~/objects/Wall'
+import GameObjectWithBody = Phaser.Types.Physics.Arcade.GameObjectWithBody
 
 export const MAIN_SCENE = 'MainScene'
 export default class MainScene extends Phaser.Scene {
@@ -38,7 +38,7 @@ export default class MainScene extends Phaser.Scene {
             new BarCounter(this),
             new Floor(this),
             new Wall(this)
-        ]);
+        ])
 
         this.toast = new Toast(this).setVisible(false)
 
@@ -95,10 +95,10 @@ export default class MainScene extends Phaser.Scene {
                     this.toast.land()
                     const win = this.toast.anims.currentFrame.index === 1
                     if (win) {
-                        this.sound.add(WIN_SFX).play()
+                        this.sound.play(WIN_SFX)
                         this.gameState = 1
                     } else {
-                        this.sound.add(LOST_SFX).play()
+                        this.sound.play(LOST_SFX)
                         this.gameState = 2
                     }
                 }
@@ -108,10 +108,10 @@ export default class MainScene extends Phaser.Scene {
         this.physics.world.collide(this.toast, this.staticGroup, (a: GameObjectWithBody) => {
             if (this.gameState === 0) {
                 (a as Toast).splat()
-                this.sound.add(SPLAT_SFX).play()
+                this.sound.play(SPLAT_SFX)
                 this.gameState = 3
             }
-        });
+        })
         super.update(time, delta)
     }
 }
