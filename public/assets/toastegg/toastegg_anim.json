@@ -1,0 +1,44 @@
+{
+    "anims": [
+        {
+            "key": "spinToastEgg",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 7,
+            "frames": [
+                {
+                    "key": "toastegg",
+                    "frame": "zetoastegg2"
+                },
+                {
+                    "key": "toastegg",
+                    "frame": "zetoastegg3"
+                },
+                {
+                    "key": "toastegg",
+                    "frame": "zetoastegg4"
+                },
+                {
+                    "key": "toastegg",
+                    "frame": "zetoastegg5"
+                },
+                {
+                    "key": "toastegg",
+                    "frame": "zetoastegg6"
+                },
+                {
+                    "key": "toastegg",
+                    "frame": "zetoastegg7"
+                },
+                {
+                    "key": "toastegg",
+                    "frame": "zetoastegg8"
+                },
+                {
+                    "key": "toastegg",
+                    "frame": "zetoastegg9"
+                }
+            ]
+        }
+    ]
+}

@@ -1,5 +1,6 @@
 export const BACKGROUND = 'background'
-export const TOAST = 'toast'
+export const TOAST = 'toastegg'
+export const TOAST_ANIM = 'toastAnim'
 export const ARROW = 'arrow'
 export const PARTICLE = 'particle'
 export const SPEED_EFFECT = 'speedEffect'

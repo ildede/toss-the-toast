@@ -1,13 +1,13 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
 import {SPEED_EFFECT} from '~/const/Assets'
-import {MAIN_SCENE} from "~/scenes/MainScene";
-import Toast from "~/objects/Toast";
-import SpinningToast from "~/objects/SpinningToast";
+import {MAIN_SCENE} from '~/scenes/MainScene'
+import Toast from '~/objects/Toast'
+import SpinningToast from '~/objects/SpinningToast'
 
 export const SPINNING_SCENE = 'SpinningScene'
 export default class SpinningScene extends Phaser.Scene {
-    private spinningToast!: Phaser.Physics.Arcade.Image;
+    private spinningToast!: SpinningToast
 
     constructor() {
         super({ key: SPINNING_SCENE })
@@ -30,23 +30,21 @@ export default class SpinningScene extends Phaser.Scene {
         infoText.setText('H = -\nJ = +')
         infoText.setOrigin(0.5, 0.5)
 
-        this.physics.add.existing(this.spinningToast)
-
         this.input.once('pointerdown', () => {
-            toast.setRotation(this.spinningToast.rotation)
-            toast.setAngularVelocity(this.spinningToast.body['angularVelocity'])
+            toast.anims.msPerFrame = this.spinningToast.anims.msPerFrame
+            toast.anims.currentFrame = this.spinningToast.anims.currentFrame
             this.scene.resume(MAIN_SCENE, toast)
             this.scene.stop()
-        }, this);
+        }, this)
 
         this.input.keyboard.on('keydown', (event: KeyboardEvent) => {
-            if (event.key === "j") {
-                this.spinningToast.setAngularVelocity(this.spinningToast.body['angularVelocity'] + 30)
+            if (event.key === 'j') {
+                this.spinningToast.anims.msPerFrame -= 10
             }
-            if (event.key === "h") {
-                this.spinningToast.setAngularVelocity(this.spinningToast.body['angularVelocity'] - 30)
+            if (event.key === 'h') {
+                this.spinningToast.anims.msPerFrame += 10
             }
-        });
+        })
     }
 
 }
