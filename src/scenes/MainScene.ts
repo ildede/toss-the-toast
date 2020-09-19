@@ -2,12 +2,13 @@ import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
 import {ARROW, BACKGROUND} from '~/const/Assets'
 import Toast from '~/objects/Toast'
+import {SPINNING_SCENE} from "~/scenes/SpinningScene";
 
 export const MAIN_SCENE = 'MainScene'
 export default class MainScene extends Phaser.Scene {
 
-    readonly START_X: number = DEFAULT_WIDTH * 0.15
-    readonly START_Y: number = DEFAULT_HEIGHT * 0.6
+    readonly START_X: number = DEFAULT_WIDTH * 0.22
+    readonly START_Y: number = DEFAULT_HEIGHT * 0.5
 
     private startingPoint!: Phaser.GameObjects.Image
     private toast!: Toast
@@ -20,10 +21,15 @@ export default class MainScene extends Phaser.Scene {
         this.cameras.main.setBounds(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT)
 
         this.add.image(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, BACKGROUND)
-            .setScale(2,2)
+            .setScale(1.6,1.6)
         this.startingPoint = this.add.image(this.START_X, this.START_Y, ARROW)
             .setScale(0.4, 0.4)
         this.toast = new Toast(this).setVisible(false)
+
+        this.events.on('resume', (system, data: Toast) => {
+            console.log('Resumed with ', data);
+            this.toast = data;
+        })
     }
 
     update(time: number, delta: number) {
@@ -51,6 +57,10 @@ export default class MainScene extends Phaser.Scene {
                         if (progress == 1) {
                             camera.startFollow(this.toast)
                             this.toast.toss(cursorX, cursorY)
+                            setTimeout(() => {
+                                this.scene.pause();
+                                this.scene.launch(SPINNING_SCENE, this.toast);
+                            }, 700)
                         }
                     }, this)
 

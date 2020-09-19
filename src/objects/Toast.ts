@@ -22,4 +22,8 @@ export default class Toast extends Phaser.Physics.Arcade.Image {
     land() {
         this.setAngularVelocity(0)
     }
+
+    reverseSpin() {
+        this.setAngularVelocity(-300)
+    }
 }

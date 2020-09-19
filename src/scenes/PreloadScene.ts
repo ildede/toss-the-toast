@@ -46,6 +46,9 @@ export default class PreloadScene extends Phaser.Scene {
             import('./MainScene').then(mainScene => {
                 this.scene.add(mainScene.MAIN_SCENE, mainScene.default, true)
             })
+            import('./SpinningScene').then(spinningScene => {
+                this.scene.add(spinningScene.SPINNING_SCENE, spinningScene.default, false)
+            })
         } else {
             console.log('The MainScene class will not even be loaded by the browser')
         }
