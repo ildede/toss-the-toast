@@ -48,7 +48,7 @@ export default class MainScene extends Phaser.Scene {
 
                 const cursorX = pointer.x;
                 const cursorY = pointer.y;
-                cam.zoomTo(4, 1500, 'Sine.easeInOut', true, (camera, progress, x, y) => {
+                cam.zoomTo(1, 1500, 'Sine.easeInOut', true, (camera, progress, x, y) => {
                     if (progress == 1) {
                         this.toast = this.physics.add.image(this.START_X, this.START_Y, TOAST).setScale(0.4, 0.4)
                         this.toast.setCollideWorldBounds(true, 0, 0)
