@@ -36,7 +36,7 @@ export default class MainScene extends Phaser.Scene {
     private plate!: Plate
     private staticGroup!: Phaser.Physics.Arcade.StaticGroup
     private music!: Phaser.Sound.BaseSound;
-
+    private timer!: number;
 
     constructor() {
         super({ key: MAIN_SCENE })
@@ -93,7 +93,7 @@ export default class MainScene extends Phaser.Scene {
                             camera.startFollow(this.toast)
                             this.toast.toss(cursorX, cursorY)
                             this.sound.play(SLIP_SFX)
-                            setTimeout(() => {
+                            this.timer = setTimeout(() => {
                                 this.music['mute'] = true
                                 this.scene.pause()
                                 this.scene.launch(SPINNING_SCENE, this.toast)
@@ -106,45 +106,44 @@ export default class MainScene extends Phaser.Scene {
     }
 
     update(time: number, delta: number) {
-        if (this.toast?.body?.velocity.y == 0 && !this.startingPoint.visible) {
-            this.toast.land()
+
+        this.physics.overlap(this.plate, this.toast, () => {
+            if (this.gameState === 0) {
+                this.toast.land()
+                const win = this.toast.anims.currentFrame.index === 1
+                if (win) {
+                    this.sound.play(WIN_SFX)
+                    this.gameState = 1
+                    this.bobble = this.add.image(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, this.getWinBobble())
+                        .setScale(5, 5)
+                } else {
+                    this.sound.play(LOST_SFX)
+                    this.gameState = 2
+
+                    this.bobble = this.add.image(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, this.getFailBobble())
+                        .setScale(5, 5)
+                }
+
+                setTimeout(() => {
+                    this.bobble?.destroy()
+                }, 4000)
+            }
+        })
+        this.physics.world.collide(this.toast, this.staticGroup, (a: GameObjectWithBody) => {
+            if (this.gameState === 0) {
+                (a as Toast).splat()
+                clearTimeout(this.timer)
+                this.sound.play(SPLAT_SFX)
+                this.gameState = 3
+            }
+        })
+        if (this.gameState > 0) {
             const cam = this.cameras.main
             cam.stopFollow()
             cam.zoomTo(1)
             this.startingPoint.setVisible(true)
         }
 
-        this.physics.overlap(this.plate, this.toast,
-            () => {
-                if (this.gameState === 0) {
-                    this.toast.land()
-                    const win = this.toast.anims.currentFrame.index === 1
-                    if (win) {
-                        this.sound.play(WIN_SFX)
-                        this.gameState = 1
-                        this.bobble = this.add.image(DEFAULT_WIDTH*0.8, DEFAULT_HEIGHT*0.4, this.getWinBobble())
-                            .setScale(5, 5)
-                    } else {
-                        this.sound.play(LOST_SFX)
-                        this.gameState = 2
-
-                        this.bobble = this.add.image(DEFAULT_WIDTH*0.8, DEFAULT_HEIGHT*0.4, this.getFailBobble())
-                            .setScale(5, 5)
-                    }
-                    setTimeout(() => {
-                        this.bobble?.destroy()
-                    }, 4000)
-                }
-
-            })
-
-        this.physics.world.collide(this.toast, this.staticGroup, (a: GameObjectWithBody) => {
-            if (this.gameState === 0) {
-                (a as Toast).splat()
-                this.sound.play(SPLAT_SFX)
-                this.gameState = 3
-            }
-        })
         super.update(time, delta)
     }
 
