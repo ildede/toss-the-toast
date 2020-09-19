@@ -4,16 +4,24 @@ import {MAIN_SCENE} from '~/scenes/MainScene'
 import Toast from '~/objects/Toast'
 import SpinningToast from '~/objects/SpinningToast'
 import SpeedBackground from '~/objects/SpeedBackground'
+import {SPIN_BGM} from '~/const/Assets'
 
 export const SPINNING_SCENE = 'SpinningScene'
 export default class SpinningScene extends Phaser.Scene {
     private spinningToast!: SpinningToast
+    private music!: Phaser.Sound.BaseSound;
 
     constructor() {
         super({ key: SPINNING_SCENE })
     }
 
     create(toast: Toast) {
+        this.music = this.sound.add(SPIN_BGM, {
+            volume: 0.4,
+            loop: true
+        })
+        this.music.play()
+
         new SpeedBackground(this)
         this.spinningToast = new SpinningToast(this, toast)
 
@@ -31,6 +39,7 @@ export default class SpinningScene extends Phaser.Scene {
         this.input.once('pointerdown', () => {
             toast.anims.msPerFrame = this.spinningToast.anims.msPerFrame
             toast.anims.currentFrame = this.spinningToast.anims.currentFrame
+            this.music.stop()
             this.scene.resume(MAIN_SCENE, toast)
             this.scene.stop()
         }, this)

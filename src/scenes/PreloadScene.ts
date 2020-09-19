@@ -1,11 +1,11 @@
 import Phaser from 'phaser'
 import {
     ARROW,
-    BACKGROUND,
+    BACKGROUND, IDLE_BGM,
     LOST_SFX,
     PLATE, SLIP_SFX,
     SPEED_BG,
-    SPEED_BG_ANIM,
+    SPEED_BG_ANIM, SPIN_BGM,
     SPLAT_SFX,
     TOAST,
     TOAST_ANIM,
@@ -59,6 +59,8 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.audio(WIN_SFX, 'music/winSFX.mp3')
         this.load.audio(WOOSH_SFX, 'music/wooshSFX.mp3')
         this.load.audio(SLIP_SFX, 'music/slipSFX.mp3')
+        this.load.audio(IDLE_BGM, 'music/idleBGM.mp3')
+        this.load.audio(SPIN_BGM, 'music/spinningBGM.mp3')
     }
 
     create() {

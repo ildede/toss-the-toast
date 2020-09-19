@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
-import {ARROW, BACKGROUND, LOST_SFX, SLIP_SFX, SPLAT_SFX, WIN_SFX} from '~/const/Assets'
+import {ARROW, BACKGROUND, IDLE_BGM, LOST_SFX, SLIP_SFX, SPLAT_SFX, WIN_SFX} from '~/const/Assets'
 import Toast from '~/objects/Toast'
 import {SPINNING_SCENE} from '~/scenes/SpinningScene'
 import Plate from '~/objects/Plate'
@@ -20,6 +20,7 @@ export default class MainScene extends Phaser.Scene {
     private toast!: Toast
     private plate!: Plate
     private staticGroup!: Phaser.Physics.Arcade.StaticGroup
+    private music!: Phaser.Sound.BaseSound;
 
     constructor() {
         super({ key: MAIN_SCENE })
@@ -27,6 +28,11 @@ export default class MainScene extends Phaser.Scene {
 
     create() {
         this.cameras.main.setBounds(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT)
+        this.music = this.sound.add(IDLE_BGM, {
+            volume: 0.4,
+            loop: true
+        })
+        this.music.play()
 
         this.add.image(DEFAULT_WIDTH/2+100, DEFAULT_HEIGHT/2+100, BACKGROUND)
             .setScale(2.4,2.4)
@@ -44,6 +50,7 @@ export default class MainScene extends Phaser.Scene {
 
         this.events.on('resume', (system, data: Toast) => {
             this.toast = data
+            this.music['mute'] = false
         })
 
         this.input.on('pointermove', (pointer) => {
@@ -71,6 +78,7 @@ export default class MainScene extends Phaser.Scene {
                             this.toast.toss(cursorX, cursorY)
                             this.sound.play(SLIP_SFX)
                             setTimeout(() => {
+                                this.music['mute'] = true
                                 this.scene.pause()
                                 this.scene.launch(SPINNING_SCENE, this.toast)
                             }, 600)
