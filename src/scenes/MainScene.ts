@@ -1,26 +1,42 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
-import {ARROW, BACKGROUND, IDLE_BGM, LOST_SFX, SLIP_SFX, SPLAT_SFX, WIN_SFX} from '~/const/Assets'
+import {
+    ARROW,
+    BACKGROUND,
+    FAIL_1, FAIL_2,
+    IDLE_BGM,
+    LOST_SFX,
+    SLIP_SFX,
+    SPLAT_SFX,
+    WIN_1,
+    WIN_2,
+    WIN_3,
+    WIN_SFX
+} from '~/const/Assets'
 import Toast from '~/objects/Toast'
 import {SPINNING_SCENE} from '~/scenes/SpinningScene'
 import Plate from '~/objects/Plate'
 import BarCounter from '~/objects/BarCounter'
 import Floor from '~/objects/Floor'
 import Wall from '~/objects/Wall'
-import GameObjectWithBody = Phaser.Types.Physics.Arcade.GameObjectWithBody
+import GameObjectWithBody = Phaser.Types.Physics.Arcade.GameObjectWithBody;
 
 export const MAIN_SCENE = 'MainScene'
 export default class MainScene extends Phaser.Scene {
 
     readonly START_X: number = DEFAULT_WIDTH * 0.20
     readonly START_Y: number = DEFAULT_HEIGHT * 0.55
+    readonly WINNING_BOBBLES: string[] = [WIN_1, WIN_2, WIN_3]
+    readonly FAIL_BOBBLES: string[] = [FAIL_1, FAIL_2]
 
     private gameState = 0
     private startingPoint!: Phaser.GameObjects.Image
+    private bobble!: Phaser.GameObjects.Image
     private toast!: Toast
     private plate!: Plate
     private staticGroup!: Phaser.Physics.Arcade.StaticGroup
     private music!: Phaser.Sound.BaseSound;
+
 
     constructor() {
         super({ key: MAIN_SCENE })
@@ -106,10 +122,18 @@ export default class MainScene extends Phaser.Scene {
                     if (win) {
                         this.sound.play(WIN_SFX)
                         this.gameState = 1
+                        this.bobble = this.add.image(DEFAULT_WIDTH*0.8, DEFAULT_HEIGHT*0.4, this.getWinBobble())
+                            .setScale(5, 5)
                     } else {
                         this.sound.play(LOST_SFX)
                         this.gameState = 2
+
+                        this.bobble = this.add.image(DEFAULT_WIDTH*0.8, DEFAULT_HEIGHT*0.4, this.getFailBobble())
+                            .setScale(5, 5)
                     }
+                    setTimeout(() => {
+                        this.bobble?.destroy()
+                    }, 4000)
                 }
 
             })
@@ -122,5 +146,12 @@ export default class MainScene extends Phaser.Scene {
             }
         })
         super.update(time, delta)
+    }
+
+    getWinBobble: () => string = () => {
+        return this.WINNING_BOBBLES[Math.floor(Math.random() * this.WINNING_BOBBLES.length)]
+    }
+    getFailBobble: () => string = () => {
+        return this.FAIL_BOBBLES[Math.floor(Math.random() * this.FAIL_BOBBLES.length)]
     }
 }

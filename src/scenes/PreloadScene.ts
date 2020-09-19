@@ -65,13 +65,13 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.audio(IDLE_BGM, 'music/idleBGM.mp3')
         this.load.audio(SPIN_BGM, 'music/spinningBGM.mp3')
 
-        this.load.image(WIN_1, 'assets/straw.png')
-        this.load.image(WIN_2, 'assets/cola.png')
-        this.load.image(WIN_3, 'assets/straw.png')
-        this.load.image(FAIL_1, 'assets/cola.png')
-        this.load.image(FAIL_2, 'assets/straw.png')
-        this.load.image(SPLAT, 'assets/cola.png')
-        this.load.image(WTF, 'assets/straw.png')
+        this.load.image(WIN_1, 'assets/win_1.png')
+        this.load.image(WIN_2, 'assets/win_2.png')
+        this.load.image(WIN_3, 'assets/win_3.png')
+        this.load.image(FAIL_1, 'assets/fail_1.png')
+        this.load.image(FAIL_2, 'assets/fail_2.png')
+        this.load.image(SPLAT, 'assets/splat.png')
+        this.load.image(WTF, 'assets/wtf.png')
     }
 
     create() {
