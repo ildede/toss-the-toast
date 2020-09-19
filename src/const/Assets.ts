@@ -5,3 +5,7 @@ export const TOAST_ANIM = 'toastAnim'
 export const ARROW = 'arrow'
 export const SPEED_BG = 'speedbg'
 export const SPEED_BG_ANIM = 'speedAnim'
+
+export const LOST_SFX = 'lostSFX'
+export const WIN_SFX = 'winSFX'
+export const SPLAT_SFX = 'splatSFX'

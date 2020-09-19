@@ -1,5 +1,16 @@
 import Phaser from 'phaser'
-import {ARROW, BACKGROUND, PLATE, SPEED_BG, SPEED_BG_ANIM, TOAST, TOAST_ANIM} from '~/const/Assets'
+import {
+    ARROW,
+    BACKGROUND,
+    LOST_SFX,
+    PLATE,
+    SPEED_BG,
+    SPEED_BG_ANIM,
+    SPLAT_SFX,
+    TOAST,
+    TOAST_ANIM,
+    WIN_SFX
+} from '~/const/Assets'
 
 export const PRELOAD_SCENE = 'PreloadScene'
 
@@ -42,6 +53,9 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.animation(SPEED_BG_ANIM, 'assets/speedbg/speedbg_anim.json')
 
         this.load.image(ARROW, 'assets/arrow.png')
+        this.load.audio(LOST_SFX, 'music/lostSFX.mp3')
+        this.load.audio(SPLAT_SFX, 'music/splatSFX.mp3')
+        this.load.audio(WIN_SFX, 'music/winSFX.mp3')
     }
 
     create() {

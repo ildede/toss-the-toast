@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
-import {ARROW, BACKGROUND} from '~/const/Assets'
+import {ARROW, BACKGROUND, LOST_SFX, SPLAT_SFX, WIN_SFX} from '~/const/Assets'
 import Toast from '~/objects/Toast'
 import {SPINNING_SCENE} from '~/scenes/SpinningScene'
 import Plate from "~/objects/Plate";
@@ -15,10 +15,11 @@ export default class MainScene extends Phaser.Scene {
     readonly START_X: number = DEFAULT_WIDTH * 0.20
     readonly START_Y: number = DEFAULT_HEIGHT * 0.55
 
+    private gameState = 0
     private startingPoint!: Phaser.GameObjects.Image
     private toast!: Toast
     private plate!: Plate
-    private staticGroup!: Phaser.Physics.Arcade.StaticGroup;
+    private staticGroup!: Phaser.Physics.Arcade.StaticGroup
 
     constructor() {
         super({ key: MAIN_SCENE })
@@ -53,7 +54,7 @@ export default class MainScene extends Phaser.Scene {
         this.input.on('pointerdown', (pointer) => {
 
             if (!this.toast.visible || (this.toast.body?.velocity.y == 0 && this.toast.body?.velocity.x == 0)) {
-
+                this.gameState = 0
                 this.startingPoint.setVisible(false)
                 this.toast.destroy()
                 this.toast = new Toast(this)
@@ -90,11 +91,26 @@ export default class MainScene extends Phaser.Scene {
 
         this.physics.overlap(this.plate, this.toast,
             () => {
-                this.toast.land()
-        })
+                if (this.gameState === 0) {
+                    this.toast.land()
+                    const win = this.toast.anims.currentFrame.index === 1
+                    if (win) {
+                        this.sound.add(WIN_SFX).play()
+                        this.gameState = 1
+                    } else {
+                        this.sound.add(LOST_SFX).play()
+                        this.gameState = 2
+                    }
+                }
+
+            })
 
         this.physics.world.collide(this.toast, this.staticGroup, (a: GameObjectWithBody) => {
-            (a as Toast).splat()
+            if (this.gameState === 0) {
+                (a as Toast).splat()
+                this.sound.add(SPLAT_SFX).play()
+                this.gameState = 3
+            }
         });
         super.update(time, delta)
     }
