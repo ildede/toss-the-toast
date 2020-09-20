@@ -5,7 +5,7 @@ import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
 
 export default class Floor extends Phaser.Physics.Arcade.Sprite {
     constructor(scene: MainScene) {
-        super(scene, DEFAULT_WIDTH*0.5, DEFAULT_HEIGHT*0.8, PLATE)
+        super(scene, DEFAULT_WIDTH*0.5, DEFAULT_HEIGHT*0.80, PLATE)
 
         this.setVisible(false)
         scene.add.existing(this)
