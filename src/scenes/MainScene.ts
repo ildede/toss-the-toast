@@ -51,8 +51,8 @@ export default class MainScene extends Phaser.Scene {
         })
         this.music.play()
 
-        this.add.image(DEFAULT_WIDTH/2+100, DEFAULT_HEIGHT/2+100, BACKGROUND)
-            .setScale(2.4,2.4)
+        this.add.image(DEFAULT_WIDTH*0.57, DEFAULT_HEIGHT/2, BACKGROUND)
+            .setScale(7,7)
         this.startingPoint = this.add.image(this.START_X, this.START_Y, ARROW)
             .setScale(0.4, 0.4)
 
