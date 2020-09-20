@@ -8,6 +8,8 @@ import OutlinePipeline from "~/ext/OutlinePipeline";
 export const SPLASH_SCENE = 'SplashScene'
 export default class SplashScene extends Phaser.Scene {
 
+    private availableToasts: { a: string; t: string }[] = [{t:TOAST_EGG,a:TOAST_EGG_SPIN},{t:TOAST_JAM,a:TOAST_JAM_SPIN}]
+
     constructor() {
         super({ key: SPLASH_SCENE })
     }
@@ -18,10 +20,15 @@ export default class SplashScene extends Phaser.Scene {
         this.anims.create({key: 'splashGif', frames: this.anims.generateFrameNames(SPLASH_SCREEN, { start: 0, end: 87 }), repeat: -1, frameRate: 6})
         this.add.sprite(DEFAULT_WIDTH/2, DEFAULT_HEIGHT*0.4, SPLASH_SCREEN).setScale(2,2).play('splashGif')
 
-        const toasts = this.add.group([
-            new SplashSpinningToast(this, DEFAULT_WIDTH*0.4, DEFAULT_HEIGHT*0.8, TOAST_EGG, TOAST_EGG_SPIN).setInteractive({ useHandCursor: true }),
-            new SplashSpinningToast(this, DEFAULT_WIDTH*0.6, DEFAULT_HEIGHT*0.8, TOAST_JAM, TOAST_JAM_SPIN).setInteractive({ useHandCursor: true })
-        ])
+        const toasts = this.add.group()
+        if (toastUnlocked === 1) {
+            toasts.add(new SplashSpinningToast(this, DEFAULT_WIDTH*0.4, DEFAULT_HEIGHT*0.8, TOAST_EGG, TOAST_EGG_SPIN).setInteractive({ useHandCursor: true }))
+        } else {
+            toasts.addMultiple([
+                new SplashSpinningToast(this, DEFAULT_WIDTH*0.4, DEFAULT_HEIGHT*0.8, TOAST_EGG, TOAST_EGG_SPIN).setInteractive({ useHandCursor: true }),
+                new SplashSpinningToast(this, DEFAULT_WIDTH*0.6, DEFAULT_HEIGHT*0.8, TOAST_JAM, TOAST_JAM_SPIN).setInteractive({ useHandCursor: true })
+            ])
+        }
         toasts.getChildren().forEach(o => o.on('pointerdown', () => {
             const t = (o as SplashSpinningToast)
             this.cameras.main.fadeOut(100)
