@@ -1,0 +1,44 @@
+{
+    "anims": [
+        {
+            "key": "spintoastnutella",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "toastnutella",
+                    "frame": "zetoastnutella1"
+                },
+                {
+                    "key": "toastnutella",
+                    "frame": "zetoastnutella2"
+                },
+                {
+                    "key": "toastnutella",
+                    "frame": "zetoastnutella3"
+                },
+                {
+                    "key": "toastnutella",
+                    "frame": "zetoastnutella4"
+                },
+                {
+                    "key": "toastnutella",
+                    "frame": "zetoastnutella5"
+                },
+                {
+                    "key": "toastnutella",
+                    "frame": "zetoastnutella6"
+                },
+                {
+                    "key": "toastnutella",
+                    "frame": "zetoastnutella7"
+                },
+                {
+                    "key": "toastnutella",
+                    "frame": "zetoastnutella8"
+                }
+            ]
+        }
+    ]
+}

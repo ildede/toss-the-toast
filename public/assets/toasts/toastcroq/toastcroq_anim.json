@@ -1,0 +1,44 @@
+{
+    "anims": [
+        {
+            "key": "spintoastcroq",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "toastcroq",
+                    "frame": "zetoastcroqmadam1"
+                },
+                {
+                    "key": "toastcroq",
+                    "frame": "zetoastcroqmadam2"
+                },
+                {
+                    "key": "toastcroq",
+                    "frame": "zetoastcroqmadam3"
+                },
+                {
+                    "key": "toastcroq",
+                    "frame": "zetoastcroqmadam4"
+                },
+                {
+                    "key": "toastcroq",
+                    "frame": "zetoastcroqmadam5"
+                },
+                {
+                    "key": "toastcroq",
+                    "frame": "zetoastcroqmadam6"
+                },
+                {
+                    "key": "toastcroq",
+                    "frame": "zetoastcroqmadam7"
+                },
+                {
+                    "key": "toastcroq",
+                    "frame": "zetoastcroqmadam8"
+                }
+            ]
+        }
+    ]
+}

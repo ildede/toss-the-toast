@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import {
-    ANGLE_GAUGE, ANGLE_POINTER,
+    ANGLE_GAUGE,
+    ANGLE_POINTER,
     ARROW,
     BACKGROUND,
     COLA,
@@ -12,12 +13,24 @@ import {
     SLIP_SFX,
     SPEED_BG,
     SPEED_BG_ANIM,
-    SPIN_BGM, SPLASH_SCREEN,
+    SPIN_BGM,
+    SPLASH_SCREEN,
     SPLAT,
     SPLAT_SFX,
     STRAW,
+    TOAST_BUTTER,
+    TOAST_BUTTER_ANIM,
+    TOAST_CROQ,
+    TOAST_CROQ_ANIM,
     TOAST_EGG,
-    TOAST_EGG_ANIM, TOAST_JAM, TOAST_JAM_ANIM, TOAST_UNLOCKED, TOAST_UNLOCKED_ANIM,
+    TOAST_EGG_ANIM,
+    TOAST_JAM,
+    TOAST_JAM_ANIM,
+    TOAST_NUTELLA,
+    TOAST_NUTELLA_ANIM, TOAST_PIZZA,
+    TOAST_PIZZA_ANIM,
+    TOAST_UNLOCKED,
+    TOAST_UNLOCKED_ANIM,
     WIN_1,
     WIN_2,
     WIN_3,
@@ -65,12 +78,21 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image(PLATE, 'assets/plate.png')
         this.load.atlas(TOAST_UNLOCKED, 'assets/toastunlocked/toastunlocked.png', 'assets/toastunlocked/toastunlocked_atlas.json')
         this.load.animation(TOAST_UNLOCKED_ANIM, 'assets/toastunlocked/toastunlocked_anim.json')
+
         this.load.atlas(TOAST_EGG, 'assets/toastegg/toastegg.png', 'assets/toastegg/toastegg_atlas.json')
         this.load.animation(TOAST_EGG_ANIM, 'assets/toastegg/toastegg_anim.json')
         this.load.atlas(TOAST_JAM, 'assets/toastjam/toastjam.png', 'assets/toastjam/toastjam_atlas.json')
         this.load.animation(TOAST_JAM_ANIM, 'assets/toastjam/toastjam_anim.json')
         this.load.atlas(SPEED_BG, 'assets/speedbg/speedbg.png', 'assets/speedbg/speedbg_atlas.json')
         this.load.animation(SPEED_BG_ANIM, 'assets/speedbg/speedbg_anim.json')
+        this.load.atlas(TOAST_BUTTER, 'assets/toasts/toastbutter/toastbutter.png', 'assets/toasts/toastbutter/toastbutter_atlas.json')
+        this.load.animation(TOAST_BUTTER_ANIM, 'assets/toasts/toastbutter/toastbutter_anim.json')
+        this.load.atlas(TOAST_CROQ, 'assets/toasts/toastcroq/toastcroq.png', 'assets/toasts/toastcroq/toastcroq_atlas.json')
+        this.load.animation(TOAST_CROQ_ANIM, 'assets/toasts/toastcroq/toastcroq_anim.json')
+        this.load.atlas(TOAST_NUTELLA, 'assets/toasts/toastnutella/toastnutella.png', 'assets/toasts/toastnutella/toastnutella_atlas.json')
+        this.load.animation(TOAST_NUTELLA_ANIM, 'assets/toasts/toastnutella/toastnutella_anim.json')
+        this.load.atlas(TOAST_PIZZA, 'assets/toasts/toastpizza/toastpizza.png', 'assets/toasts/toastpizza/toastpizza_atlas.json')
+        this.load.animation(TOAST_PIZZA_ANIM, 'assets/toasts/toastpizza/toastpizza_anim.json')
 
         this.load.image(STRAW, 'assets/straw.png')
         this.load.image(COLA, 'assets/cola.png')

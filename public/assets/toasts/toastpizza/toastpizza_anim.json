@@ -1,0 +1,44 @@
+{
+    "anims": [
+        {
+            "key": "spintoastpizza",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "toastpizza",
+                    "frame": "zetoastpizza1"
+                },
+                {
+                    "key": "toastpizza",
+                    "frame": "zetoastpizza2"
+                },
+                {
+                    "key": "toastpizza",
+                    "frame": "zetoastpizza3"
+                },
+                {
+                    "key": "toastpizza",
+                    "frame": "zetoastpizza4"
+                },
+                {
+                    "key": "toastpizza",
+                    "frame": "zetoastpizza5"
+                },
+                {
+                    "key": "toastpizza",
+                    "frame": "zetoastpizza6"
+                },
+                {
+                    "key": "toastpizza",
+                    "frame": "zetoastpizza7"
+                },
+                {
+                    "key": "toastpizza",
+                    "frame": "zetoastpizza8"
+                }
+            ]
+        }
+    ]
+}

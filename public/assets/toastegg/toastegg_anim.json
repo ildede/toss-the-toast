@@ -4,7 +4,7 @@
             "key": "spinToastEgg",
             "type": "frames",
             "repeat": -1,
-            "frameRate": 7,
+            "frameRate": 12,
             "frames": [
                 {
                     "key": "toastegg",

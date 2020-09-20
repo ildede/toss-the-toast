@@ -11,7 +11,7 @@ export default class SplashSpinningToast extends Phaser.GameObjects.Sprite {
         this.TEXTURE = texture
         this.ANIM = anim
         scene.add.existing(this)
-        this.setScale(0.4, 0.4)
+        this.setScale(0.3, 0.3)
 
         this.anims.play(anim)
     }

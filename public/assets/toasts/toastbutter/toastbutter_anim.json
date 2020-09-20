@@ -1,0 +1,44 @@
+{
+    "anims": [
+        {
+            "key": "spintoastbutter",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "toastbutter",
+                    "frame": "zetoastbutter1"
+                },
+                {
+                    "key": "toastbutter",
+                    "frame": "zetoastbutter2"
+                },
+                {
+                    "key": "toastbutter",
+                    "frame": "zetoastbutter3"
+                },
+                {
+                    "key": "toastbutter",
+                    "frame": "zetoastbutter4"
+                },
+                {
+                    "key": "toastbutter",
+                    "frame": "zetoastbutter5"
+                },
+                {
+                    "key": "toastbutter",
+                    "frame": "zetoastbutter6"
+                },
+                {
+                    "key": "toastbutter",
+                    "frame": "zetoastbutter7"
+                },
+                {
+                    "key": "toastbutter",
+                    "frame": "zetoastbutter8"
+                }
+            ]
+        }
+    ]
+}

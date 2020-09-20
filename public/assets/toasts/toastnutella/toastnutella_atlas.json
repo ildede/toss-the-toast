@@ -1,0 +1,112 @@
+{
+    "frames": [
+        {
+            "filename": "zetoastnutella1",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 4,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastnutella3",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 840,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastnutella2",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 1676,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastnutella8",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 2512,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastnutella4",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 3348,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastnutella5",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 4184,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastnutella6",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 5020,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastnutella7",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 5856,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
