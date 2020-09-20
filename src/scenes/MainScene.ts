@@ -46,8 +46,6 @@ export default class MainScene extends Phaser.Scene {
     }
 
     create(data: { texture: string, anim: string, toastCount: number }) {
-        console.log(data)
-        console.log(this.gameState)
         this.toastUnlocked = data.toastCount
         if (this.gameState === 1) this.gameState = -1
 
