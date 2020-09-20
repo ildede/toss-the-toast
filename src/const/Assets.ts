@@ -23,3 +23,5 @@ export const FAIL_1 = 'fail1'
 export const FAIL_2 = 'fail2'
 export const SPLAT = 'splat'
 export const WTF = 'wtf'
+
+export const SPLASH_SCREEN = 'splashScreen'

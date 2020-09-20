@@ -11,7 +11,7 @@ import {
     SLIP_SFX,
     SPEED_BG,
     SPEED_BG_ANIM,
-    SPIN_BGM,
+    SPIN_BGM, SPLASH_SCREEN,
     SPLAT,
     SPLAT_SFX,
     STRAW,
@@ -83,6 +83,11 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image(FAIL_2, 'assets/fail_2.png')
         this.load.image(SPLAT, 'assets/splat.png')
         this.load.image(WTF, 'assets/wtf.png')
+
+        this.load.spritesheet(SPLASH_SCREEN, 'assets/splashSpriteSheet.png', {
+            frameHeight: 300,
+            frameWidth: 600
+        })
     }
 
     create() {

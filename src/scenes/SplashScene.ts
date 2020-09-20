@@ -1,5 +1,7 @@
 import Phaser from 'phaser'
 import {MAIN_SCENE} from "~/scenes/MainScene";
+import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from "~/main";
+import {SPLASH_SCREEN} from "~/const/Assets";
 
 export const SPLASH_SCENE = 'SplashScene'
 export default class SplashScene extends Phaser.Scene {
@@ -9,17 +11,16 @@ export default class SplashScene extends Phaser.Scene {
     }
 
     create() {
-        const width = this.cameras.main.width
-        const height = this.cameras.main.height
+
+        this.anims.create({key: 'splashGif', frames: this.anims.generateFrameNames(SPLASH_SCREEN, { start: 0, end: 87 }), repeat: -1, frameRate: 6})
+        this.add.sprite(DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2, SPLASH_SCREEN).setDisplaySize(DEFAULT_WIDTH, DEFAULT_HEIGHT).play('splashGif')
+
         const loadingText = this.make.text({
-            x: width/2,
-            y: height/2,
-            style: {
-                font: '25px monospace',
-                fill: '#ffffff'
-            }
+            x: DEFAULT_WIDTH/2,
+            y: DEFAULT_HEIGHT*0.8,
+            style: {font: '30px monospace', fill: '#ffffff'}
         })
-        loadingText.setText('Splash Screen')
+        loadingText.setText('Loading...')
         loadingText.setOrigin(0.5, 0.5)
 
         setTimeout(() => {
