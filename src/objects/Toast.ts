@@ -45,7 +45,7 @@ export default class Toast extends Phaser.Physics.Arcade.Sprite {
     }
 
     splat() {
-        this.anims.stop()
+        this.anims.stopOnFrame(this.anims.currentAnim.frames[4])
         this.setVelocity(0, 0)
     }
 }
