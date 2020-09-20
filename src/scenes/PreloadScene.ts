@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import {
+    ANGLE_GAUGE, ANGLE_POINTER,
     ARROW,
     BACKGROUND,
     COLA,
@@ -75,6 +76,9 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image(COLA, 'assets/cola.png')
 
         this.load.image(ARROW, 'assets/arrow.png')
+        this.load.image(ANGLE_GAUGE, 'assets/anglemeter/angleMeterGauge.png')
+        this.load.image(ANGLE_POINTER, 'assets/anglemeter/angleMeterPointer.png')
+
         this.load.audio(LOST_SFX, 'music/lostSFX.mp3')
         this.load.audio(SPLAT_SFX, 'music/splatSFX.mp3')
         this.load.audio(WIN_SFX, 'music/winSFX.mp3')
