@@ -43,6 +43,7 @@ export default class MainScene extends Phaser.Scene {
     }
 
     create() {
+        this.cameras.main.fadeIn(100)
         this.cameras.main.setBounds(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT)
         this.music = this.sound.add(IDLE_BGM, {
             volume: 0.4,

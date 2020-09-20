@@ -1,10 +1,10 @@
 import Phaser from 'phaser'
-import {TOAST} from '~/const/Assets'
+import {TOAST_EGG} from '~/const/Assets'
 import MainScene from '~/scenes/MainScene'
 
 export default class Toast extends Phaser.Physics.Arcade.Sprite {
     constructor(scene: MainScene) {
-        super(scene, scene.START_X, scene.START_Y, TOAST)
+        super(scene, scene.START_X, scene.START_Y, TOAST_EGG)
 
         scene.add.existing(this)
 
