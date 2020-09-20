@@ -8,6 +8,7 @@ import {
     IDLE_BGM,
     LOST_SFX,
     SLIP_SFX,
+    SPLAT,
     SPLAT_SFX,
     WIN_1,
     WIN_2,
@@ -34,6 +35,7 @@ export default class MainScene extends Phaser.Scene {
     readonly WINNING_BOBBLES: string[] = [WIN_1, WIN_2, WIN_3]
     readonly FAIL_BOBBLES: string[] = [FAIL_1, FAIL_2]
     readonly WTF_BOBBLES: string[] = [WTF]
+    readonly SPLAT_BOBBLES: string[] = [SPLAT]
 
     private gameState = -1
     private startingPoint!: Phaser.GameObjects.Image
@@ -89,6 +91,7 @@ export default class MainScene extends Phaser.Scene {
             if (this.gameState != 1) {
                 this.gameState = 0
                 this.startingPoint.setVisible(false)
+                this.bobble?.destroy()
                 this.toast.destroy()
                 this.toast = new Toast(this, data)
 
@@ -179,6 +182,13 @@ export default class MainScene extends Phaser.Scene {
                 clearTimeout(this.timer)
                 this.sound.play(SPLAT_SFX)
                 this.gameState = 3
+
+                this.bobble = this.add.image((a as Toast).x, DEFAULT_HEIGHT * 0.5, this.getSplatBobble())
+                        .setScale(5, 5)
+                this.time.addEvent({
+                    delay: 4000,
+                    callback:() => this.bobble?.destroy()
+                })
             }
         })
         if (this.gameState > 0) {
@@ -202,5 +212,8 @@ export default class MainScene extends Phaser.Scene {
     }
     getWtfBobble: () => string = () => {
         return this.WTF_BOBBLES[Math.floor(Math.random() * this.WTF_BOBBLES.length)]
+    }
+    getSplatBobble: () => string = () => {
+        return this.SPLAT_BOBBLES[Math.floor(Math.random() * this.SPLAT_BOBBLES.length)]
     }
 }
