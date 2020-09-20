@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import MainScene from '~/scenes/MainScene'
-import {TOAST_SCALE} from "~/const/Config";
+import {DEFAULT_TOSS_SPEED, TOAST_SCALE} from "~/const/Config";
 
 export default class Toast extends Phaser.Physics.Arcade.Sprite {
     readonly animName: string;
@@ -18,11 +18,10 @@ export default class Toast extends Phaser.Physics.Arcade.Sprite {
 
     toss(cursorX: number, cursorY: number) {
         this.scene.physics.add.existing(this)
-        this.setCollideWorldBounds(true, 0, 0)
         this.setBodySize(300,200,true)
 
         this.anims.play(this.animName)
-        this.scene.physics.moveTo(this, cursorX, cursorY, 900)
+        this.scene.physics.moveTo(this, cursorX, cursorY, DEFAULT_TOSS_SPEED)
     }
 
     land() {
