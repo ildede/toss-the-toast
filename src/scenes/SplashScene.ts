@@ -4,7 +4,7 @@ import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from "~/main";
 import {
     SPLASH_SCREEN,
     TOAST_BUTTER,
-    TOAST_BUTTER_SPIN, TOAST_CROQ, TOAST_CROQ_SPIN,
+    TOAST_BUTTER_SPIN, TOAST_CAT, TOAST_CAT_SPIN, TOAST_CROQ, TOAST_CROQ_SPIN,
     TOAST_EGG,
     TOAST_EGG_SPIN,
     TOAST_JAM,
@@ -22,7 +22,8 @@ export default class SplashScene extends Phaser.Scene {
         {t:TOAST_BUTTER,a:TOAST_BUTTER_SPIN},
         {t:TOAST_CROQ,a:TOAST_CROQ_SPIN},
         {t:TOAST_NUTELLA,a:TOAST_NUTELLA_SPIN},
-        {t:TOAST_PIZZA,a:TOAST_PIZZA_SPIN}
+        {t:TOAST_PIZZA,a:TOAST_PIZZA_SPIN},
+        {t:TOAST_CAT,a:TOAST_CAT_SPIN}
         ]
 
     constructor() {
@@ -79,6 +80,9 @@ export default class SplashScene extends Phaser.Scene {
                     new SplashSpinningToast(this, DEFAULT_WIDTH*0.3, DEFAULT_HEIGHT*0.9, TOAST_NUTELLA, TOAST_NUTELLA_SPIN).setInteractive({ useHandCursor: true }),
                     new SplashSpinningToast(this, DEFAULT_WIDTH*0.7, DEFAULT_HEIGHT*0.9, TOAST_PIZZA, TOAST_PIZZA_SPIN).setInteractive({ useHandCursor: true })
                 ])
+                break
+            case 7:
+                toasts.add(new SplashSpinningToast(this, DEFAULT_WIDTH*0.5, DEFAULT_HEIGHT*0.8, TOAST_CAT, TOAST_CAT_SPIN).setInteractive({ useHandCursor: true }))
                 break
             default:
                 toasts.addMultiple([

@@ -1,0 +1,44 @@
+{
+    "anims": [
+        {
+            "key": "spintoastcat",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "toastcat",
+                    "frame": "zetoastnyancat1"
+                },
+                {
+                    "key": "toastcat",
+                    "frame": "zetoastnyancat2"
+                },
+                {
+                    "key": "toastcat",
+                    "frame": "zetoastnyancat3"
+                },
+                {
+                    "key": "toastcat",
+                    "frame": "zetoastnyancat4"
+                },
+                {
+                    "key": "toastcat",
+                    "frame": "zetoastnyancat5"
+                },
+                {
+                    "key": "toastcat",
+                    "frame": "zetoastnyancat6"
+                },
+                {
+                    "key": "toastcat",
+                    "frame": "zetoastnyancat7"
+                },
+                {
+                    "key": "toastcat",
+                    "frame": "zetoastnyancat8"
+                }
+            ]
+        }
+    ]
+}

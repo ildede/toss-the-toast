@@ -19,7 +19,7 @@ import {
     SPLAT_SFX,
     STRAW,
     TOAST_BUTTER,
-    TOAST_BUTTER_ANIM,
+    TOAST_BUTTER_ANIM, TOAST_CAT, TOAST_CAT_ANIM,
     TOAST_CROQ,
     TOAST_CROQ_ANIM,
     TOAST_EGG,
@@ -93,6 +93,8 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.animation(TOAST_NUTELLA_ANIM, 'assets/toasts/toastnutella/toastnutella_anim.json')
         this.load.atlas(TOAST_PIZZA, 'assets/toasts/toastpizza/toastpizza.png', 'assets/toasts/toastpizza/toastpizza_atlas.json')
         this.load.animation(TOAST_PIZZA_ANIM, 'assets/toasts/toastpizza/toastpizza_anim.json')
+        this.load.atlas(TOAST_CAT, 'assets/toasts/toastcat/toastcat.png', 'assets/toasts/toastcat/toastcat_atlas.json')
+        this.load.animation(TOAST_CAT_ANIM, 'assets/toasts/toastcat/toastcat_anim.json')
 
         this.load.image(STRAW, 'assets/straw.png')
         this.load.image(COLA, 'assets/cola.png')
