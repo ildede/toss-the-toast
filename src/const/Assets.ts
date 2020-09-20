@@ -11,6 +11,8 @@ export const SPEED_BG = 'speedbg'
 export const SPEED_BG_ANIM = 'speedAnim'
 export const STRAW = 'straw'
 export const COLA = 'cola'
+export const PLUS = 'plus'
+export const MINUS = 'minus'
 
 export const LOST_SFX = 'lostSFX'
 export const WIN_SFX = 'winSFX'

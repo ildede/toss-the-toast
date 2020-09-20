@@ -44,8 +44,8 @@ export default class SpinningScene extends Phaser.Scene {
             x: DEFAULT_WIDTH/2,
             y: DEFAULT_HEIGHT*0.85,
             style: {
-                font: '50px monospace',
-                fill: '#ffffff'
+                font: '100px monospace',
+                fill: '#ff0000'
             }
         })
         infoText.setText('H = -\nJ = +')
