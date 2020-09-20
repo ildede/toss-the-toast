@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
 import {
+    ANGLE_GAUGE,
     ARROW,
     BACKGROUND,
     FAIL_1,
@@ -26,11 +27,12 @@ import UnlockedNewToast from "~/objects/UnlockedNewToast";
 import {SPLASH_SCENE} from "~/scenes/SplashScene";
 import {BGM_VOLUME, TIME_TO_ENTER_SPEED_EFFECT} from "~/const/Config";
 import GameObjectWithBody = Phaser.Types.Physics.Arcade.GameObjectWithBody;
+import AngleGauge from "~/objects/AngleGouge";
 
 export const MAIN_SCENE = 'MainScene'
 export default class MainScene extends Phaser.Scene {
 
-    readonly START_X: number = DEFAULT_WIDTH * 0.20
+    readonly START_X: number = DEFAULT_WIDTH * 0.15
     readonly START_Y: number = DEFAULT_HEIGHT * 0.55
     readonly WINNING_BOBBLES: string[] = [WIN_1, WIN_2, WIN_3]
     readonly FAIL_BOBBLES: string[] = [FAIL_1, FAIL_2]
@@ -65,8 +67,7 @@ export default class MainScene extends Phaser.Scene {
 
         this.add.image(DEFAULT_WIDTH*0.57, DEFAULT_HEIGHT/2, BACKGROUND)
             .setScale(7,7)
-        this.startingPoint = this.add.image(this.START_X, this.START_Y, ARROW)
-            .setScale(0.4, 0.4)
+        this.startingPoint = new AngleGauge(this, this.START_X, this.START_Y)
 
         this.plate = new Plate(this)
         this.staticGroup = this.physics.add.staticGroup([
@@ -84,7 +85,9 @@ export default class MainScene extends Phaser.Scene {
 
         this.input.on('pointermove', (pointer) => {
             const angle = Phaser.Math.Angle.Between(this.START_X, this.START_Y, pointer.x, pointer.y)
-            this.startingPoint.setRotation(angle)
+            if (angle > -1.47 && angle < 0) {
+                this.startingPoint.setRotation(angle)
+            }
         }, this)
 
         this.input.on('pointerdown', (pointer) => {
@@ -98,13 +101,11 @@ export default class MainScene extends Phaser.Scene {
                 const cam = this.cameras.main
                 cam.pan(this.START_X, this.START_Y, 400, 'Sine.easeInOut')
 
-                const cursorX = pointer.x
-                const cursorY = pointer.y
                 cam.zoomTo(5, 500, 'Sine.easeInOut', true,
                     (camera: Phaser.Cameras.Scene2D.Camera, progress: number) => {
                         if (progress == 1) {
                             camera.startFollow(this.toast)
-                            this.toast.toss(cursorX, cursorY)
+                            this.toast.toss(this.startingPoint)
                             this.sound.play(SLIP_SFX)
                             this.timer = setTimeout(() => {
                                 this.music['mute'] = true
