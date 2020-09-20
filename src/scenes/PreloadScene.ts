@@ -95,6 +95,17 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image(SPLAT, 'assets/splat.png')
         this.load.image(WTF, 'assets/wtf.png')
 
+        this.load.image('number0', 'assets/numbers/number0.png')
+        this.load.image('number1', 'assets/numbers/number1.png')
+        this.load.image('number2', 'assets/numbers/number2.png')
+        this.load.image('number3', 'assets/numbers/number3.png')
+        this.load.image('number4', 'assets/numbers/number4.png')
+        this.load.image('number5', 'assets/numbers/number5.png')
+        this.load.image('number6', 'assets/numbers/number6.png')
+        this.load.image('number7', 'assets/numbers/number7.png')
+        this.load.image('number8', 'assets/numbers/number8.png')
+        this.load.image('number9', 'assets/numbers/number9.png')
+
         this.load.spritesheet(SPLASH_SCREEN, 'assets/splashSpriteSheet.png', {
             frameHeight: 300,
             frameWidth: 600

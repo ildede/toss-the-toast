@@ -82,16 +82,10 @@ export default class MainScene extends Phaser.Scene {
             this.toast = data.toast
             this.music['mute'] = false
             if (data.score) {
-                const scoreText = this.make.text({
-                    x: DEFAULT_WIDTH*0.95,
-                    y: DEFAULT_HEIGHT*0.1,
-                    style: {
-                        font: '50px monospace',
-                        fill: '#ffffff'
-                    }
-                })
-                scoreText.setText(`${data.score}`)
-                scoreText.setOrigin(0.5, 0.5)
+                this.add.image(DEFAULT_WIDTH*0.95, DEFAULT_HEIGHT*0.1, `number${Math.floor(data.score%10)}`)
+                    .setScale(0.5, 0.5)
+                this.add.image(DEFAULT_WIDTH*0.92, DEFAULT_HEIGHT*0.1, `number${Math.floor((data.score/10)%10)}`)
+                    .setScale(0.5, 0.5)
             }
         })
 

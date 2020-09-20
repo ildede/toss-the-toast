@@ -12,7 +12,8 @@ export default class SpinningScene extends Phaser.Scene {
     private spinningToast!: SpinningToast
     private music!: Phaser.Sound.BaseSound;
     private score = 0;
-    private scoreText!: Phaser.GameObjects.Text;
+    private unitValue!: Phaser.GameObjects.Image;
+    private tensValue!: Phaser.GameObjects.Image;
 
     constructor() {
         super({ key: SPINNING_SCENE })
@@ -50,16 +51,10 @@ export default class SpinningScene extends Phaser.Scene {
         infoText.setText('H = -\nJ = +')
         infoText.setOrigin(0.5, 0.5)
 
-        this.scoreText = this.make.text({
-            x: DEFAULT_WIDTH*0.95,
-            y: DEFAULT_HEIGHT*0.1,
-            style: {
-                font: '50px monospace',
-                fill: '#ffffff'
-            }
-        })
-        this.scoreText.setText(`${this.score}`)
-        this.scoreText.setOrigin(0.5, 0.5)
+        this.unitValue = this.add.image(DEFAULT_WIDTH*0.95, DEFAULT_HEIGHT*0.1, 'number0')
+            .setScale(0.5, 0.5)
+        this.tensValue = this.add.image(DEFAULT_WIDTH*0.92, DEFAULT_HEIGHT*0.1, 'number0')
+            .setScale(0.5, 0.5)
 
         setTimeout(() => {
             toast.anims.msPerFrame = this.spinningToast.anims.msPerFrame
@@ -82,7 +77,10 @@ export default class SpinningScene extends Phaser.Scene {
     }
 
     update(time: number, delta: number) {
-        this.scoreText.setText(`${this.score}`)
+        this.unitValue.setTexture(`number${Math.floor(this.score%10)}`)
+        if (this.score > 9) {
+            this.tensValue.setTexture(`number${Math.floor((this.score/10)%10)}`)
+        }
         super.update(time, delta);
     }
 
