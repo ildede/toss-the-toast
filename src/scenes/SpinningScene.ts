@@ -4,7 +4,7 @@ import {MAIN_SCENE} from '~/scenes/MainScene'
 import Toast from '~/objects/Toast'
 import SpinningToast from '~/objects/SpinningToast'
 import SpeedBackground from '~/objects/SpeedBackground'
-import {COLA, SPIN_BGM, STRAW} from '~/const/Assets'
+import {COLA, MINUS, PLUS, SPIN_BGM, STRAW} from '~/const/Assets'
 import {BGM_VOLUME, SPEED_EFFECT_TIME} from "~/const/Config";
 
 export const SPINNING_SCENE = 'SpinningScene'
@@ -40,16 +40,19 @@ export default class SpinningScene extends Phaser.Scene {
 
         this.spinningToast = new SpinningToast(this, toast)
 
-        const infoText = this.make.text({
-            x: DEFAULT_WIDTH/2,
-            y: DEFAULT_HEIGHT*0.85,
-            style: {
-                font: '100px monospace',
-                fill: '#ff0000'
+        const plus = this.add.image(DEFAULT_WIDTH*0.6, DEFAULT_HEIGHT*0.85, PLUS)
+            .setInteractive({ useHandCursor: true })
+        const minus = this.add.image(DEFAULT_WIDTH*0.4, DEFAULT_HEIGHT*0.85, MINUS)
+            .setInteractive({ useHandCursor: true })
+        plus.on('pointerdown', () => {
+            if (this.spinningToast.anims.msPerFrame > 30) {
+                this.spinningToast.anims.msPerFrame -= 5
             }
         })
-        infoText.setText('H = -\nJ = +')
-        infoText.setOrigin(0.5, 0.5)
+        minus.on('pointerdown', () => {
+            this.spinningToast.anims.msPerFrame += 5
+        })
+
 
         this.unitValue = this.add.image(DEFAULT_WIDTH*0.95, DEFAULT_HEIGHT*0.1, 'number0')
             .setScale(0.5, 0.5)
@@ -65,12 +68,13 @@ export default class SpinningScene extends Phaser.Scene {
         }, SPEED_EFFECT_TIME)
 
         this.input.keyboard.on('keydown', (event: KeyboardEvent) => {
-            if (event.key === 'j') {
+            console.log(event.key)
+            if (event.key === '+' || event.key === 'j') {
                 if (this.spinningToast.anims.msPerFrame > 30) {
                     this.spinningToast.anims.msPerFrame -= 5
                 }
             }
-            if (event.key === 'h') {
+            if (event.key === '-' || event.key === 'h') {
                 this.spinningToast.anims.msPerFrame += 5
             }
         })

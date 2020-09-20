@@ -8,8 +8,8 @@ import {
     FAIL_1,
     FAIL_2,
     IDLE_BGM,
-    LOST_SFX,
-    PLATE,
+    LOST_SFX, MINUS,
+    PLATE, PLUS,
     SLIP_SFX,
     SPEED_BG,
     SPEED_BG_ANIM,
@@ -98,6 +98,8 @@ export default class PreloadScene extends Phaser.Scene {
 
         this.load.image(STRAW, 'assets/straw.png')
         this.load.image(COLA, 'assets/cola.png')
+        this.load.image(PLUS, 'assets/plus.png')
+        this.load.image(MINUS, 'assets/minus.png')
 
         this.load.image(ARROW, 'assets/arrow.png')
         this.load.image(ANGLE_GAUGE, 'assets/anglemeter/angleMeterGauge.png')
