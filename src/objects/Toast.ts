@@ -33,13 +33,36 @@ export default class Toast extends Phaser.Physics.Arcade.Sprite {
         // currentFrame.index === 5 //SUPER SPLAT
         // currentFrame.index === 6 //AFTER SPLAT
         // currentFrame.index === 7 //WTF LEFT
-        if (this.anims.currentFrame.index === 8 || this.anims.currentFrame.index === 4) {
-            this.anims.nextFrame()
-        } else if (this.anims.currentFrame.index === 2 || this.anims.currentFrame.index === 6) {
-            this.anims.previousFrame()
+        switch (this.anims.currentFrame.index) {
+            case 8:
+                this.anims.stopOnFrame(this.anims.currentAnim.frames[0])
+                break;
+            case 1:
+                this.anims.stop()
+                break;
+            case 2:
+                this.anims.previousFrame()
+                this.anims.stop()
+                break;
+            case 3:
+                this.anims.stop()
+                break;
+            case 4:
+                this.anims.stopOnFrame(this.anims.currentAnim.frames[4])
+                break;
+            case 5:
+                this.anims.stop()
+                break;
+            case 6:
+                this.anims.previousFrame()
+                this.anims.stop()
+                break;
+            case 7:
+                this.anims.stop()
+                break;
+            default:
+                this.anims.stop()
         }
-
-        this.anims.stop()
         this.setVelocity(0, 0)
         this.body['setAllowGravity'](false)
     }
