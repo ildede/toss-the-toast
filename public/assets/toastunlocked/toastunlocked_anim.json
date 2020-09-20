@@ -1,0 +1,72 @@
+{
+    "anims": [
+        {
+            "key": "bounceToastUnlocked",
+            "type": "frames",
+            "repeat": 0,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked1"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked2"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked3"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked4"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked5"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked6"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked7"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked8"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked9"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked10"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked11"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked12"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked13"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked14"
+                },
+                {
+                    "key": "toastunlocked",
+                    "frame": "toastunlocked15"
+                }
+            ]
+        }
+    ]
+}

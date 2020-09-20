@@ -16,7 +16,7 @@ import {
     SPLAT_SFX,
     STRAW,
     TOAST_EGG,
-    TOAST_EGG_ANIM, TOAST_JAM, TOAST_JAM_ANIM,
+    TOAST_EGG_ANIM, TOAST_JAM, TOAST_JAM_ANIM, TOAST_UNLOCKED, TOAST_UNLOCKED_ANIM,
     WIN_1,
     WIN_2,
     WIN_3,
@@ -24,6 +24,7 @@ import {
     WOOSH_SFX,
     WTF
 } from '~/const/Assets'
+import OutlinePipeline from "~/ext/OutlinePipeline";
 
 const defaultConfig = (width: number, height: number) => {
     return {
@@ -44,6 +45,8 @@ export default class PreloadScene extends Phaser.Scene {
     }
 
     preload() {
+        (this.game.renderer as Phaser.Renderer.WebGL.WebGLRenderer).addPipeline(OutlinePipeline.KEY, new OutlinePipeline(this.game))
+
         const width = this.cameras.main.width
         const height = this.cameras.main.height
 
@@ -59,6 +62,8 @@ export default class PreloadScene extends Phaser.Scene {
 
         this.load.image(BACKGROUND, 'assets/background.png')
         this.load.image(PLATE, 'assets/plate.png')
+        this.load.atlas(TOAST_UNLOCKED, 'assets/toastunlocked/toastunlocked.png', 'assets/toastunlocked/toastunlocked_atlas.json')
+        this.load.animation(TOAST_UNLOCKED_ANIM, 'assets/toastunlocked/toastunlocked_anim.json')
         this.load.atlas(TOAST_EGG, 'assets/toastegg/toastegg.png', 'assets/toastegg/toastegg_atlas.json')
         this.load.animation(TOAST_EGG_ANIM, 'assets/toastegg/toastegg_anim.json')
         this.load.atlas(TOAST_JAM, 'assets/toastjam/toastjam.png', 'assets/toastjam/toastjam_atlas.json')

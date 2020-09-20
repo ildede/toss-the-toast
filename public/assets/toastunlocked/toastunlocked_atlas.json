@@ -1,0 +1,203 @@
+{
+    "frames": [
+        {
+            "filename": "toastunlocked1",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 4,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked11",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 4,
+                "y": 830
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked2",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 980,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked3",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 980,
+                "y": 830
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked4",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 4,
+                "y": 1656
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked5",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 980,
+                "y": 1656
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked6",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 1956,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked7",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 1956,
+                "y": 830
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked8",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 1956,
+                "y": 1656
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked9",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 4,
+                "y": 2482
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked15",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 980,
+                "y": 2482
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked10",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 1956,
+                "y": 2482
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked12",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 2932,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked13",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 2932,
+                "y": 830
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "toastunlocked14",
+            "frame": {
+                "w": 970,
+                "h": 820,
+                "x": 2932,
+                "y": 1656
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

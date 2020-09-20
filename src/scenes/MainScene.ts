@@ -20,6 +20,8 @@ import BarCounter from '~/objects/BarCounter'
 import Floor from '~/objects/Floor'
 import Wall from '~/objects/Wall'
 import GameObjectWithBody = Phaser.Types.Physics.Arcade.GameObjectWithBody;
+import UnlockedNewToast from "~/objects/UnlockedNewToast";
+import {SPLASH_SCENE} from "~/scenes/SplashScene";
 
 export const MAIN_SCENE = 'MainScene'
 export default class MainScene extends Phaser.Scene {
@@ -29,7 +31,7 @@ export default class MainScene extends Phaser.Scene {
     readonly WINNING_BOBBLES: string[] = [WIN_1, WIN_2, WIN_3]
     readonly FAIL_BOBBLES: string[] = [FAIL_1, FAIL_2]
 
-    private gameState = 0
+    private gameState = -1
     private startingPoint!: Phaser.GameObjects.Image
     private bobble!: Phaser.GameObjects.Image
     private toast!: Toast
@@ -37,12 +39,18 @@ export default class MainScene extends Phaser.Scene {
     private staticGroup!: Phaser.Physics.Arcade.StaticGroup
     private music!: Phaser.Sound.BaseSound;
     private timer!: number;
+    private toastUnlocked = 1;
 
     constructor() {
         super({ key: MAIN_SCENE })
     }
 
-    create(data: { texture: string, anim: string }) {
+    create(data: { texture: string, anim: string, toastCount: number }) {
+        console.log(data)
+        console.log(this.gameState)
+        this.toastUnlocked = data.toastCount
+        if (this.gameState === 1) this.gameState = -1
+
         this.cameras.main.fadeIn(100)
         this.cameras.main.setBounds(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT)
         this.music = this.sound.add(IDLE_BGM, {
@@ -76,8 +84,7 @@ export default class MainScene extends Phaser.Scene {
         }, this)
 
         this.input.on('pointerdown', (pointer) => {
-
-            if (!this.toast.visible || (this.toast.body?.velocity.y == 0 && this.toast.body?.velocity.x == 0)) {
+            if (this.gameState != 1) {
                 this.gameState = 0
                 this.startingPoint.setVisible(false)
                 this.toast.destroy()
@@ -117,17 +124,29 @@ export default class MainScene extends Phaser.Scene {
                     this.gameState = 1
                     this.bobble = this.add.image(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, this.getWinBobble())
                         .setScale(5, 5)
+                    this.time.addEvent({
+                        delay: 4000,
+                        callback:() => {
+                            this.bobble?.destroy()
+                            const unlocked = new UnlockedNewToast(this, DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2).setInteractive({ useHandCursor: true })
+                            unlocked.on('pointerdown', () => {
+                                this.scene.stop()
+                                this.scene.start(SPLASH_SCENE, { toastCount: this.toastUnlocked+1 })
+                            })
+                        }
+                    })
+
                 } else {
                     this.sound.play(LOST_SFX)
                     this.gameState = 2
 
                     this.bobble = this.add.image(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, this.getFailBobble())
                         .setScale(5, 5)
+                    this.time.addEvent({
+                        delay: 4000,
+                        callback:() => this.bobble?.destroy()
+                    })
                 }
-
-                setTimeout(() => {
-                    this.bobble?.destroy()
-                }, 4000)
             }
         })
         this.physics.world.collide(this.toast, this.staticGroup, (a: GameObjectWithBody) => {
@@ -142,7 +161,10 @@ export default class MainScene extends Phaser.Scene {
             const cam = this.cameras.main
             cam.stopFollow()
             cam.zoomTo(1)
-            this.startingPoint.setVisible(true)
+
+            if (this.gameState != 1) {
+                this.startingPoint.setVisible(true)
+            }
         }
 
         super.update(time, delta)
