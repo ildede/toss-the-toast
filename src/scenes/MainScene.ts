@@ -3,7 +3,8 @@ import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
 import {
     ARROW,
     BACKGROUND,
-    FAIL_1, FAIL_2,
+    FAIL_1,
+    FAIL_2,
     IDLE_BGM,
     LOST_SFX,
     SLIP_SFX,
@@ -19,10 +20,10 @@ import Plate from '~/objects/Plate'
 import BarCounter from '~/objects/BarCounter'
 import Floor from '~/objects/Floor'
 import Wall from '~/objects/Wall'
-import GameObjectWithBody = Phaser.Types.Physics.Arcade.GameObjectWithBody;
 import UnlockedNewToast from "~/objects/UnlockedNewToast";
 import {SPLASH_SCENE} from "~/scenes/SplashScene";
-import {BGM_VOLUME} from "~/const/Config";
+import {BGM_VOLUME, TIME_TO_ENTER_SPEED_EFFECT} from "~/const/Config";
+import GameObjectWithBody = Phaser.Types.Physics.Arcade.GameObjectWithBody;
 
 export const MAIN_SCENE = 'MainScene'
 export default class MainScene extends Phaser.Scene {
@@ -104,7 +105,7 @@ export default class MainScene extends Phaser.Scene {
                                 this.music['mute'] = true
                                 this.scene.pause()
                                 this.scene.launch(SPINNING_SCENE, this.toast)
-                            }, 600)
+                            }, TIME_TO_ENTER_SPEED_EFFECT)
                         }
                     }, this)
 
