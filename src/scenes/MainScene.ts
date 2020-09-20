@@ -12,7 +12,8 @@ import {
     WIN_1,
     WIN_2,
     WIN_3,
-    WIN_SFX
+    WIN_SFX,
+    WTF
 } from '~/const/Assets'
 import Toast from '~/objects/Toast'
 import {SPINNING_SCENE} from '~/scenes/SpinningScene'
@@ -32,6 +33,7 @@ export default class MainScene extends Phaser.Scene {
     readonly START_Y: number = DEFAULT_HEIGHT * 0.55
     readonly WINNING_BOBBLES: string[] = [WIN_1, WIN_2, WIN_3]
     readonly FAIL_BOBBLES: string[] = [FAIL_1, FAIL_2]
+    readonly WTF_BOBBLES: string[] = [WTF]
 
     private gameState = -1
     private startingPoint!: Phaser.GameObjects.Image
@@ -117,8 +119,25 @@ export default class MainScene extends Phaser.Scene {
 
         this.physics.overlap(this.plate, this.toast, () => {
             if (this.gameState === 0) {
+                const win = this.toast.anims.currentFrame.index === 8
+                    || this.toast.anims.currentFrame.index === 1
+                    || this.toast.anims.currentFrame.index === 2
+                const wtf = this.toast.anims.currentFrame.index === 3
+                    || this.toast.anims.currentFrame.index === 7
+                // const win = false
+                // const wtf = true
                 this.toast.land()
-                const win = this.toast.anims.currentFrame.index === 1
+                // const win = this.toast.anims.currentFrame.index === 8 //BEFORE 100
+                // const win = this.toast.anims.currentFrame.index === 1 //100
+                // const win = this.toast.anims.currentFrame.index === 2 //AFTER 100
+
+                // const win = this.toast.anims.currentFrame.index === 3 //WTF RIGHT
+
+                // const win = this.toast.anims.currentFrame.index === 4 //BEFORE SPLAT
+                // const win = this.toast.anims.currentFrame.index === 5 //SUPER SPLAT
+                // const win = this.toast.anims.currentFrame.index === 6 //AFTER SPLAT
+
+                // const win = this.toast.anims.currentFrame.index === 7 //WTF LEFT
                 if (win) {
                     this.sound.play(WIN_SFX)
                     this.gameState = 1
@@ -140,8 +159,13 @@ export default class MainScene extends Phaser.Scene {
                     this.sound.play(LOST_SFX)
                     this.gameState = 2
 
-                    this.bobble = this.add.image(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, this.getFailBobble())
-                        .setScale(5, 5)
+                    if (wtf) {
+                        this.bobble = this.add.image(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, this.getWtfBobble())
+                            .setScale(5, 5)
+                    } else {
+                        this.bobble = this.add.image(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, this.getFailBobble())
+                            .setScale(5, 5)
+                    }
                     this.time.addEvent({
                         delay: 4000,
                         callback:() => this.bobble?.destroy()
@@ -175,5 +199,8 @@ export default class MainScene extends Phaser.Scene {
     }
     getFailBobble: () => string = () => {
         return this.FAIL_BOBBLES[Math.floor(Math.random() * this.FAIL_BOBBLES.length)]
+    }
+    getWtfBobble: () => string = () => {
+        return this.WTF_BOBBLES[Math.floor(Math.random() * this.WTF_BOBBLES.length)]
     }
 }
