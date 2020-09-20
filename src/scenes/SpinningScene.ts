@@ -5,7 +5,7 @@ import Toast from '~/objects/Toast'
 import SpinningToast from '~/objects/SpinningToast'
 import SpeedBackground from '~/objects/SpeedBackground'
 import {COLA, SPIN_BGM, STRAW} from '~/const/Assets'
-import {BGM_VOLUME} from "~/const/Config";
+import {BGM_VOLUME, SPEED_EFFECT_TIME} from "~/const/Config";
 
 export const SPINNING_SCENE = 'SpinningScene'
 export default class SpinningScene extends Phaser.Scene {
@@ -30,7 +30,7 @@ export default class SpinningScene extends Phaser.Scene {
             targets: cola,
             displayWidth: { start: 0, to: straw.width*1.5-30 },
             ease: 'Linear',
-            duration: 4000
+            duration: SPEED_EFFECT_TIME
         })
 
         this.spinningToast = new SpinningToast(this, toast)
@@ -52,7 +52,7 @@ export default class SpinningScene extends Phaser.Scene {
             this.music.stop()
             this.scene.resume(MAIN_SCENE, toast)
             this.scene.stop()
-        }, 4100)
+        }, SPEED_EFFECT_TIME)
 
         this.input.keyboard.on('keydown', (event: KeyboardEvent) => {
             if (event.key === 'j') {
