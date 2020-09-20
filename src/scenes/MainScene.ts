@@ -42,7 +42,7 @@ export default class MainScene extends Phaser.Scene {
         super({ key: MAIN_SCENE })
     }
 
-    create() {
+    create(data: { texture: string, anim: string }) {
         this.cameras.main.fadeIn(100)
         this.cameras.main.setBounds(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT)
         this.music = this.sound.add(IDLE_BGM, {
@@ -63,7 +63,7 @@ export default class MainScene extends Phaser.Scene {
             new Wall(this)
         ])
 
-        this.toast = new Toast(this).setVisible(false)
+        this.toast = new Toast(this, data).setVisible(false)
 
         this.events.on('resume', (system, data: Toast) => {
             this.toast = data
@@ -81,7 +81,7 @@ export default class MainScene extends Phaser.Scene {
                 this.gameState = 0
                 this.startingPoint.setVisible(false)
                 this.toast.destroy()
-                this.toast = new Toast(this)
+                this.toast = new Toast(this, data)
 
                 const cam = this.cameras.main
                 cam.pan(this.START_X, this.START_Y, 400, 'Sine.easeInOut')

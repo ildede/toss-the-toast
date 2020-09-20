@@ -31,11 +31,12 @@ export default class SplashScene extends Phaser.Scene {
             new SplashSpinningToast(this, DEFAULT_WIDTH*0.6, DEFAULT_HEIGHT*0.8, TOAST_JAM, 'spinToastJam').setInteractive({ useHandCursor: true })
         ])
         toasts.getChildren().forEach(o => o.on('pointerdown', () => {
+            const t = (o as SplashSpinningToast)
             this.cameras.main.fadeOut(100)
             this.time.addEvent({
                 delay: 100,
                 callback: () => {
-                    this.scene.start(MAIN_SCENE)
+                    this.scene.start(MAIN_SCENE, { texture: t.TEXTURE, anim: t.ANIM })
                 }
             })
         }))
