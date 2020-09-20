@@ -14,6 +14,9 @@ export default class SpinningToast extends Phaser.GameObjects.Sprite {
 
         this.anims.play(toast.animName, true, toast.anims.currentFrame.index)
 
-        this.on('animationrepeat', () => this.scene.sound.play(WOOSH_SFX))
+        this.on('animationrepeat', () => {
+            scene.sound.play(WOOSH_SFX)
+            scene.incrementCounter()
+        })
     }
 }

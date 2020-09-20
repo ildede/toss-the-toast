@@ -78,9 +78,21 @@ export default class MainScene extends Phaser.Scene {
 
         this.toast = new Toast(this, data).setVisible(false)
 
-        this.events.on('resume', (system, data: Toast) => {
-            this.toast = data
+        this.events.on('resume', (system, data: {toast: Toast, score: number}) => {
+            this.toast = data.toast
             this.music['mute'] = false
+            if (data.score) {
+                const scoreText = this.make.text({
+                    x: DEFAULT_WIDTH*0.95,
+                    y: DEFAULT_HEIGHT*0.1,
+                    style: {
+                        font: '50px monospace',
+                        fill: '#ffffff'
+                    }
+                })
+                scoreText.setText(`${data.score}`)
+                scoreText.setOrigin(0.5, 0.5)
+            }
         })
 
         this.input.on('pointermove', (pointer) => {

@@ -11,12 +11,15 @@ export const SPINNING_SCENE = 'SpinningScene'
 export default class SpinningScene extends Phaser.Scene {
     private spinningToast!: SpinningToast
     private music!: Phaser.Sound.BaseSound;
+    private score = 0;
+    private scoreText!: Phaser.GameObjects.Text;
 
     constructor() {
         super({ key: SPINNING_SCENE })
     }
 
     create(toast: Toast) {
+        this.score = 0
         this.music = this.sound.add(SPIN_BGM, {
             volume: BGM_VOLUME,
             loop: true
@@ -47,11 +50,22 @@ export default class SpinningScene extends Phaser.Scene {
         infoText.setText('H = -\nJ = +')
         infoText.setOrigin(0.5, 0.5)
 
+        this.scoreText = this.make.text({
+            x: DEFAULT_WIDTH*0.95,
+            y: DEFAULT_HEIGHT*0.1,
+            style: {
+                font: '50px monospace',
+                fill: '#ffffff'
+            }
+        })
+        this.scoreText.setText(`${this.score}`)
+        this.scoreText.setOrigin(0.5, 0.5)
+
         setTimeout(() => {
             toast.anims.msPerFrame = this.spinningToast.anims.msPerFrame
             toast.anims.currentFrame = this.spinningToast.anims.currentFrame
             this.music.stop()
-            this.scene.resume(MAIN_SCENE, toast)
+            this.scene.resume(MAIN_SCENE, { score: this.score, toast: toast })
             this.scene.stop()
         }, SPEED_EFFECT_TIME)
 
@@ -67,4 +81,10 @@ export default class SpinningScene extends Phaser.Scene {
         })
     }
 
+    update(time: number, delta: number) {
+        this.scoreText.setText(`${this.score}`)
+        super.update(time, delta);
+    }
+
+    incrementCounter: () => void = () => this.score += 1
 }
