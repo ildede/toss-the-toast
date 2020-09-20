@@ -16,7 +16,7 @@ import {
     SPLAT_SFX,
     STRAW,
     TOAST_EGG,
-    TOAST_ANIM,
+    TOAST_EGG_ANIM, TOAST_JAM, TOAST_JAM_ANIM,
     WIN_1,
     WIN_2,
     WIN_3,
@@ -60,7 +60,9 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image(BACKGROUND, 'assets/background.png')
         this.load.image(PLATE, 'assets/plate.png')
         this.load.atlas(TOAST_EGG, 'assets/toastegg/toastegg.png', 'assets/toastegg/toastegg_atlas.json')
-        this.load.animation(TOAST_ANIM, 'assets/toastegg/toastegg_anim.json')
+        this.load.animation(TOAST_EGG_ANIM, 'assets/toastegg/toastegg_anim.json')
+        this.load.atlas(TOAST_JAM, 'assets/toastjam/toastjam.png', 'assets/toastjam/toastjam_atlas.json')
+        this.load.animation(TOAST_JAM_ANIM, 'assets/toastjam/toastjam_anim.json')
         this.load.atlas(SPEED_BG, 'assets/speedbg/speedbg.png', 'assets/speedbg/speedbg_atlas.json')
         this.load.animation(SPEED_BG_ANIM, 'assets/speedbg/speedbg_anim.json')
 

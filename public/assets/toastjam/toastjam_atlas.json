@@ -1,0 +1,112 @@
+{
+    "frames": [
+        {
+            "filename": "zetoastjam1",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 4,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastjam2",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 4,
+                "y": 800
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastjam3",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 840,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastjam4",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 840,
+                "y": 800
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastjam5",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 4,
+                "y": 1596
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastjam6",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 840,
+                "y": 1596
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastjam7",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 1676,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "zetoastjam8",
+            "frame": {
+                "w": 830,
+                "h": 790,
+                "x": 1676,
+                "y": 800
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
