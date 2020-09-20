@@ -1,7 +1,7 @@
 import Phaser from 'phaser'
 import {MAIN_SCENE} from "~/scenes/MainScene";
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from "~/main";
-import {SPLASH_SCREEN, TOAST_EGG, TOAST_JAM} from "~/const/Assets";
+import {SPLASH_SCREEN, TOAST_EGG, TOAST_EGG_SPIN, TOAST_JAM, TOAST_JAM_SPIN} from "~/const/Assets";
 import SplashSpinningToast from "~/objects/SplashSpinningToast";
 import OutlinePipeline from "~/ext/OutlinePipeline";
 
@@ -19,8 +19,8 @@ export default class SplashScene extends Phaser.Scene {
         this.add.sprite(DEFAULT_WIDTH/2, DEFAULT_HEIGHT*0.4, SPLASH_SCREEN).setScale(2,2).play('splashGif')
 
         const toasts = this.add.group([
-            new SplashSpinningToast(this, DEFAULT_WIDTH*0.4, DEFAULT_HEIGHT*0.8, TOAST_EGG, 'spinToastEgg').setInteractive({ useHandCursor: true }),
-            new SplashSpinningToast(this, DEFAULT_WIDTH*0.6, DEFAULT_HEIGHT*0.8, TOAST_JAM, 'spinToastJam').setInteractive({ useHandCursor: true })
+            new SplashSpinningToast(this, DEFAULT_WIDTH*0.4, DEFAULT_HEIGHT*0.8, TOAST_EGG, TOAST_EGG_SPIN).setInteractive({ useHandCursor: true }),
+            new SplashSpinningToast(this, DEFAULT_WIDTH*0.6, DEFAULT_HEIGHT*0.8, TOAST_JAM, TOAST_JAM_SPIN).setInteractive({ useHandCursor: true })
         ])
         toasts.getChildren().forEach(o => o.on('pointerdown', () => {
             const t = (o as SplashSpinningToast)
