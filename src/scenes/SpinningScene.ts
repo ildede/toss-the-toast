@@ -29,6 +29,7 @@ export default class SpinningScene extends Phaser.Scene {
         this.tweens.add({
             targets: cola,
             displayWidth: { start: 0, to: straw.width*1.5-30 },
+            x: { start: DEFAULT_WIDTH*0.148, to: DEFAULT_WIDTH*0.5 },
             ease: 'Linear',
             duration: SPEED_EFFECT_TIME
         })
