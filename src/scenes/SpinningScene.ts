@@ -5,6 +5,7 @@ import Toast from '~/objects/Toast'
 import SpinningToast from '~/objects/SpinningToast'
 import SpeedBackground from '~/objects/SpeedBackground'
 import {COLA, SPIN_BGM, STRAW} from '~/const/Assets'
+import {BGM_VOLUME} from "~/const/Config";
 
 export const SPINNING_SCENE = 'SpinningScene'
 export default class SpinningScene extends Phaser.Scene {
@@ -17,7 +18,7 @@ export default class SpinningScene extends Phaser.Scene {
 
     create(toast: Toast) {
         this.music = this.sound.add(SPIN_BGM, {
-            volume: 0.4,
+            volume: BGM_VOLUME,
             loop: true
         })
         this.music.play()

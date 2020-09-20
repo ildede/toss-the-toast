@@ -22,6 +22,7 @@ import Wall from '~/objects/Wall'
 import GameObjectWithBody = Phaser.Types.Physics.Arcade.GameObjectWithBody;
 import UnlockedNewToast from "~/objects/UnlockedNewToast";
 import {SPLASH_SCENE} from "~/scenes/SplashScene";
+import {BGM_VOLUME} from "~/const/Config";
 
 export const MAIN_SCENE = 'MainScene'
 export default class MainScene extends Phaser.Scene {
@@ -52,7 +53,7 @@ export default class MainScene extends Phaser.Scene {
         this.cameras.main.fadeIn(100)
         this.cameras.main.setBounds(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT)
         this.music = this.sound.add(IDLE_BGM, {
-            volume: 0.4,
+            volume: BGM_VOLUME,
             loop: true
         })
         this.music.play()
