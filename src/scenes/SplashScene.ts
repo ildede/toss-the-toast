@@ -3,6 +3,7 @@ import {MAIN_SCENE} from "~/scenes/MainScene";
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from "~/main";
 import {SPLASH_SCREEN, TOAST_EGG} from "~/const/Assets";
 import SplashSpinningToast from "~/objects/SplashSpinningToast";
+import OutlinePipeline from "~/ext/OutlinePipeline";
 
 export const SPLASH_SCENE = 'SplashScene'
 export default class SplashScene extends Phaser.Scene {
@@ -12,6 +13,7 @@ export default class SplashScene extends Phaser.Scene {
     }
 
     create() {
+        (this.game.renderer as Phaser.Renderer.WebGL.WebGLRenderer).addPipeline(OutlinePipeline.KEY, new OutlinePipeline(this.game));
 
         this.anims.create({key: 'splashGif', frames: this.anims.generateFrameNames(SPLASH_SCREEN, { start: 0, end: 87 }), repeat: -1, frameRate: 6})
         this.add.sprite(DEFAULT_WIDTH/2, DEFAULT_HEIGHT*0.4, SPLASH_SCREEN).setScale(2,2).play('splashGif')
@@ -33,7 +35,17 @@ export default class SplashScene extends Phaser.Scene {
                     this.scene.start(MAIN_SCENE)
                 }
             })
-
+        })
+        toast.on('pointerover', () => {
+            toast.setPipeline(OutlinePipeline.KEY)
+            toast.pipeline.setFloat2(
+                "uTextureSize",
+                toast.displayWidth,
+                toast.displayHeight
+            )
+        })
+        toast.on('pointerout', () => {
+            toast.resetPipeline()
         })
     }
 }
