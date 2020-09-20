@@ -96,7 +96,7 @@ export default class MainScene extends Phaser.Scene {
             }
         }, this)
 
-        this.input.on('pointerdown', (pointer) => {
+        this.input.on('pointerdown', () => {
             if (this.gameState != 1) {
                 this.gameState = 0
                 this.startingPoint.setVisible(false)
