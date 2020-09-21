@@ -5,7 +5,7 @@ import {
     ARROW,
     BACKGROUND,
     COLA,
-    FAIL_1,
+    FAIL_1, FAIL_1_ANIM,
     FAIL_2,
     IDLE_BGM,
     LOST_SFX, MINUS,
@@ -116,6 +116,8 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image(WIN_1, 'assets/win_1.png')
         this.load.image(WIN_2, 'assets/win_2.png')
         this.load.image(WIN_3, 'assets/win_3.png')
+        this.load.atlas(FAIL_1, 'assets/balloons/balloonfail1/balloonfail1.png', 'assets/balloons/balloonfail1/balloonfail1_atlas.json')
+        this.load.animation(FAIL_1_ANIM, 'assets/balloons/balloonfail1/balloonfail1_anim.json')
         this.load.image(FAIL_1, 'assets/fail_1.png')
         this.load.image(FAIL_2, 'assets/fail_2.png')
         this.load.image(SPLAT, 'assets/splat.png')

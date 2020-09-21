@@ -1,10 +1,9 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
 import {
-    ANGLE_GAUGE,
-    ARROW,
     BACKGROUND,
     FAIL_1,
+    FAIL_1_POPUP,
     FAIL_2,
     IDLE_BGM,
     LOST_SFX,
@@ -26,8 +25,8 @@ import Wall from '~/objects/Wall'
 import UnlockedNewToast from "~/objects/UnlockedNewToast";
 import {SPLASH_SCENE} from "~/scenes/SplashScene";
 import {BGM_VOLUME, TIME_TO_ENTER_SPEED_EFFECT} from "~/const/Config";
-import GameObjectWithBody = Phaser.Types.Physics.Arcade.GameObjectWithBody;
 import AngleGauge from "~/objects/AngleGouge";
+import GameObjectWithBody = Phaser.Types.Physics.Arcade.GameObjectWithBody;
 
 export const MAIN_SCENE = 'MainScene'
 export default class MainScene extends Phaser.Scene {
@@ -179,8 +178,8 @@ export default class MainScene extends Phaser.Scene {
                         this.bobble = this.add.image(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, this.getWtfBobble())
                             .setScale(5, 5)
                     } else {
-                        this.bobble = this.add.image(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, this.getFailBobble())
-                            .setScale(5, 5)
+                        this.bobble = this.add.sprite(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, FAIL_1)
+                            .play(FAIL_1_POPUP)
                     }
                     this.time.addEvent({
                         delay: 4000,
@@ -207,7 +206,7 @@ export default class MainScene extends Phaser.Scene {
         if (this.gameState > 0) {
             const cam = this.cameras.main
             cam.stopFollow()
-            cam.zoomTo(1)
+            cam.zoomTo(1, 150)
 
             if (this.gameState != 1) {
                 this.startingPoint.setVisible(true)
@@ -221,7 +220,7 @@ export default class MainScene extends Phaser.Scene {
         return this.WINNING_BOBBLES[Math.floor(Math.random() * this.WINNING_BOBBLES.length)]
     }
     getFailBobble: () => string = () => {
-        return this.FAIL_BOBBLES[Math.floor(Math.random() * this.FAIL_BOBBLES.length)]
+        return this.FAIL_BOBBLES[0]//[Math.floor(Math.random() * this.FAIL_BOBBLES.length)]
     }
     getWtfBobble: () => string = () => {
         return this.WTF_BOBBLES[Math.floor(Math.random() * this.WTF_BOBBLES.length)]
