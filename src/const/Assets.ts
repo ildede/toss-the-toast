@@ -37,9 +37,12 @@ export const FAIL_1_POPUP = 'popupballoonfail1'
 export const FAIL_2 = 'balloonfail2'
 export const FAIL_2_ANIM = 'fail2Anim'
 export const FAIL_2_POPUP = 'popupballoonfail2'
-
-export const SPLAT = 'splat'
-export const WTF = 'wtf'
+export const SPLAT_1 = 'balloonsplat1'
+export const SPLAT_1_ANIM = 'splat1Anim'
+export const SPLAT_1_POPUP = 'popupballoonsplat1'
+export const WTF_1 = 'balloonwtf1'
+export const WTF_1_ANIM = 'wtf1Anim'
+export const WTF_1_POPUP = 'popupballoonwtf1'
 
 export const SPLASH_SCREEN = 'splashScreen'
 

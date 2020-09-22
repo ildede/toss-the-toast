@@ -9,14 +9,16 @@ import {
     IDLE_BGM,
     LOST_SFX,
     SLIP_SFX,
-    SPLAT,
+    SPLAT_1,
+    SPLAT_1_POPUP,
     SPLAT_SFX,
     WIN_1,
     WIN_1_POPUP,
     WIN_3,
     WIN_3_POPUP,
     WIN_SFX,
-    WTF
+    WTF_1,
+    WTF_1_POPUP
 } from '~/const/Assets'
 import Toast from '~/objects/Toast'
 import {SPINNING_SCENE} from '~/scenes/SpinningScene'
@@ -37,8 +39,8 @@ export default class MainScene extends Phaser.Scene {
     readonly START_Y: number = DEFAULT_HEIGHT * 0.55
     readonly WINNING_BOBBLES: { a: string; t: string }[] = [{t:WIN_1,a:WIN_1_POPUP}, {t:WIN_3,a:WIN_3_POPUP}]
     readonly FAIL_BOBBLES: { a: string; t: string }[] = [{t:FAIL_1,a:FAIL_1_POPUP}, {t:FAIL_2,a:FAIL_2_POPUP}]
-    readonly WTF_BOBBLES: string[] = [WTF]
-    readonly SPLAT_BOBBLES: string[] = [SPLAT]
+    readonly WTF_BOBBLES: { a: string; t: string }[] = [{t:WTF_1,a:WTF_1_POPUP}]
+    readonly SPLAT_BOBBLES: { a: string; t: string }[] = [{t:SPLAT_1,a:SPLAT_1_POPUP}]
 
     private gameState = -1
     private startingPoint!: Phaser.GameObjects.Image
@@ -215,12 +217,14 @@ export default class MainScene extends Phaser.Scene {
         return this.add.sprite(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, bobble.t)
             .play(bobble.a)
     }
-    getWtfBobble: () => Phaser.GameObjects.Image = () => {
-        return this.add.image(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, this.WTF_BOBBLES[0])
-            .setScale(5, 5)
+    getWtfBobble: () => Phaser.GameObjects.Sprite = () => {
+        const bobble = this.WTF_BOBBLES[0]
+        return this.add.sprite(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, bobble.t)
+            .play(bobble.a)
     }
-    getSplatBobble: (x: number, y: number) => Phaser.GameObjects.Image = (x: number, y: number) => {
-        return this.add.image(x, y, this.SPLAT_BOBBLES[0])
-            .setScale(5, 5)
+    getSplatBobble: (x: number, y: number) => Phaser.GameObjects.Sprite = (x: number, y: number) => {
+        const bobble = this.SPLAT_BOBBLES[0]
+        return this.add.sprite(x, y, bobble.t)
+            .play(bobble.a)
     }
 }

@@ -1,0 +1,68 @@
+{
+    "anims": [
+        {
+            "key": "popupballoonwtf1",
+            "type": "frames",
+            "repeat": 0,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim1"
+                },
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim2"
+                },
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim3"
+                },
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim4"
+                },
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim5"
+                },
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim6"
+                },
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim7"
+                },
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim8"
+                },
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim9"
+                },
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim10"
+                },
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim11"
+                },
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim12"
+                },
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim13"
+                },
+                {
+                    "key": "balloonwtf1",
+                    "frame": "wtfanim14"
+                }
+            ]
+        }
+    ]
+}

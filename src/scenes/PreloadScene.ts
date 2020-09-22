@@ -5,21 +5,28 @@ import {
     ARROW,
     BACKGROUND,
     COLA,
-    FAIL_1, FAIL_1_ANIM,
-    FAIL_2, FAIL_2_ANIM,
+    FAIL_1,
+    FAIL_1_ANIM,
+    FAIL_2,
+    FAIL_2_ANIM,
     IDLE_BGM,
-    LOST_SFX, MINUS,
-    PLATE, PLUS,
+    LOST_SFX,
+    MINUS,
+    PLATE,
+    PLUS,
     SLIP_SFX,
     SPEED_BG,
     SPEED_BG_ANIM,
     SPIN_BGM,
     SPLASH_SCREEN,
-    SPLAT,
+    SPLAT_1,
+    SPLAT_1_ANIM,
     SPLAT_SFX,
     STRAW,
     TOAST_BUTTER,
-    TOAST_BUTTER_ANIM, TOAST_CAT, TOAST_CAT_ANIM,
+    TOAST_BUTTER_ANIM,
+    TOAST_CAT,
+    TOAST_CAT_ANIM,
     TOAST_CROQ,
     TOAST_CROQ_ANIM,
     TOAST_EGG,
@@ -27,16 +34,19 @@ import {
     TOAST_JAM,
     TOAST_JAM_ANIM,
     TOAST_NUTELLA,
-    TOAST_NUTELLA_ANIM, TOAST_PIZZA,
+    TOAST_NUTELLA_ANIM,
+    TOAST_PIZZA,
     TOAST_PIZZA_ANIM,
     TOAST_UNLOCKED,
     TOAST_UNLOCKED_ANIM,
-    WIN_1, WIN_1_ANIM,
-    WIN_2, WIN_2_ANIM,
-    WIN_3, WIN_3_ANIM,
+    WIN_1,
+    WIN_1_ANIM,
+    WIN_3,
+    WIN_3_ANIM,
     WIN_SFX,
     WOOSH_SFX,
-    WTF
+    WTF_1,
+    WTF_1_ANIM
 } from '~/const/Assets'
 import OutlinePipeline from "~/ext/OutlinePipeline";
 
@@ -123,8 +133,10 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.animation(FAIL_1_ANIM, 'assets/balloons/balloonfail1/balloonfail1_anim.json')
         this.load.atlas(FAIL_2, 'assets/balloons/balloonfail2/balloonfail2.png', 'assets/balloons/balloonfail2/balloonfail2_atlas.json')
         this.load.animation(FAIL_2_ANIM, 'assets/balloons/balloonfail2/balloonfail2_anim.json')
-        this.load.image(SPLAT, 'assets/splat.png')
-        this.load.image(WTF, 'assets/wtf.png')
+        this.load.atlas(SPLAT_1, 'assets/balloons/balloonsplat1/balloonsplat1.png', 'assets/balloons/balloonsplat1/balloonsplat1_atlas.json')
+        this.load.animation(SPLAT_1_ANIM, 'assets/balloons/balloonsplat1/balloonsplat1_anim.json')
+        this.load.atlas(WTF_1, 'assets/balloons/balloonwtf1/balloonwtf1.png', 'assets/balloons/balloonwtf1/balloonwtf1_atlas.json')
+        this.load.animation(WTF_1_ANIM, 'assets/balloons/balloonwtf1/balloonwtf1_anim.json')
 
         this.load.image('number0', 'assets/numbers/number0.png')
         this.load.image('number1', 'assets/numbers/number1.png')

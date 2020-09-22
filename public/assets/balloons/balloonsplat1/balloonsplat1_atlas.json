@@ -1,0 +1,190 @@
+{
+    "frames": [
+        {
+            "filename": "splatanim1",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 4,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "splatanim2",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 4,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "splatanim3",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 610,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "splatanim4",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 610,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "splatanim5",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 1216,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "splatanim6",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 1216,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "splatanim7",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 1822,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "splatanim8",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 1822,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "splatanim14",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 2428,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "splatanim9",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 2428,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "splatanim10",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 3034,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "splatanim11",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 3034,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "splatanim12",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 3640,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "splatanim13",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 3640,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
