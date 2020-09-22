@@ -49,6 +49,8 @@ export default class MainScene extends Phaser.Scene {
     private music!: Phaser.Sound.BaseSound;
     private timer!: number;
     private toastUnlocked = 1;
+    private unitScoreValue!: Phaser.GameObjects.Image;
+    private tensScoreValue!: Phaser.GameObjects.Image;
 
     constructor() {
         super({ key: MAIN_SCENE })
@@ -89,9 +91,11 @@ export default class MainScene extends Phaser.Scene {
             this.toast = data.toast
             this.music['mute'] = false
             if (data.score) {
-                this.add.image(DEFAULT_WIDTH*0.95, DEFAULT_HEIGHT*0.1, `number${Math.floor(data.score%10)}`)
+                this.unitScoreValue?.destroy()
+                this.tensScoreValue?.destroy()
+                this.unitScoreValue = this.add.image(DEFAULT_WIDTH*0.95, DEFAULT_HEIGHT*0.1, `number${Math.floor(data.score%10)}`)
                     .setScale(0.5, 0.5)
-                this.add.image(DEFAULT_WIDTH*0.92, DEFAULT_HEIGHT*0.1, `number${Math.floor((data.score/10)%10)}`)
+                this.tensScoreValue = this.add.image(DEFAULT_WIDTH*0.92, DEFAULT_HEIGHT*0.1, `number${Math.floor((data.score/10)%10)}`)
                     .setScale(0.5, 0.5)
             }
         })
