@@ -6,7 +6,7 @@ import {
     BACKGROUND,
     COLA,
     FAIL_1, FAIL_1_ANIM,
-    FAIL_2,
+    FAIL_2, FAIL_2_ANIM,
     IDLE_BGM,
     LOST_SFX, MINUS,
     PLATE, PLUS,
@@ -31,9 +31,9 @@ import {
     TOAST_PIZZA_ANIM,
     TOAST_UNLOCKED,
     TOAST_UNLOCKED_ANIM,
-    WIN_1,
-    WIN_2,
-    WIN_3,
+    WIN_1, WIN_1_ANIM,
+    WIN_2, WIN_2_ANIM,
+    WIN_3, WIN_3_ANIM,
     WIN_SFX,
     WOOSH_SFX,
     WTF
@@ -113,13 +113,16 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.audio(IDLE_BGM, 'music/idleBGM.mp3')
         this.load.audio(SPIN_BGM, 'music/spinningBGM.mp3')
 
-        this.load.image(WIN_1, 'assets/win_1.png')
-        this.load.image(WIN_2, 'assets/win_2.png')
-        this.load.image(WIN_3, 'assets/win_3.png')
+        this.load.atlas(WIN_1, 'assets/balloons/balloonwin1/balloonwin1.png', 'assets/balloons/balloonwin1/balloonwin1_atlas.json')
+        this.load.animation(WIN_1_ANIM, 'assets/balloons/balloonwin1/balloonwin1_anim.json')
+        // this.load.atlas(WIN_2, 'assets/balloons/balloonwin2/balloonwin2.png', 'assets/balloons/balloonwin2/balloonwin2_atlas.json')
+        // this.load.animation(WIN_1_ANIM, 'assets/balloons/balloonwin2/balloonwin2_anim.json')
+        this.load.atlas(WIN_3, 'assets/balloons/balloonwin3/balloonwin3.png', 'assets/balloons/balloonwin3/balloonwin3_atlas.json')
+        this.load.animation(WIN_3_ANIM, 'assets/balloons/balloonwin3/balloonwin3_anim.json')
         this.load.atlas(FAIL_1, 'assets/balloons/balloonfail1/balloonfail1.png', 'assets/balloons/balloonfail1/balloonfail1_atlas.json')
         this.load.animation(FAIL_1_ANIM, 'assets/balloons/balloonfail1/balloonfail1_anim.json')
-        this.load.image(FAIL_1, 'assets/fail_1.png')
-        this.load.image(FAIL_2, 'assets/fail_2.png')
+        this.load.atlas(FAIL_2, 'assets/balloons/balloonfail2/balloonfail2.png', 'assets/balloons/balloonfail2/balloonfail2_atlas.json')
+        this.load.animation(FAIL_2_ANIM, 'assets/balloons/balloonfail2/balloonfail2_anim.json')
         this.load.image(SPLAT, 'assets/splat.png')
         this.load.image(WTF, 'assets/wtf.png')
 

@@ -5,14 +5,16 @@ import {
     FAIL_1,
     FAIL_1_POPUP,
     FAIL_2,
+    FAIL_2_POPUP,
     IDLE_BGM,
     LOST_SFX,
     SLIP_SFX,
     SPLAT,
     SPLAT_SFX,
     WIN_1,
-    WIN_2,
+    WIN_1_POPUP,
     WIN_3,
+    WIN_3_POPUP,
     WIN_SFX,
     WTF
 } from '~/const/Assets'
@@ -33,8 +35,8 @@ export default class MainScene extends Phaser.Scene {
 
     readonly START_X: number = DEFAULT_WIDTH * 0.15
     readonly START_Y: number = DEFAULT_HEIGHT * 0.55
-    readonly WINNING_BOBBLES: string[] = [WIN_1, WIN_2, WIN_3]
-    readonly FAIL_BOBBLES: string[] = [FAIL_1, FAIL_2]
+    readonly WINNING_BOBBLES: { a: string; t: string }[] = [{t:WIN_1,a:WIN_1_POPUP}, {t:WIN_3,a:WIN_3_POPUP}]
+    readonly FAIL_BOBBLES: { a: string; t: string }[] = [{t:FAIL_1,a:FAIL_1_POPUP}, {t:FAIL_2,a:FAIL_2_POPUP}]
     readonly WTF_BOBBLES: string[] = [WTF]
     readonly SPLAT_BOBBLES: string[] = [SPLAT]
 
@@ -139,25 +141,11 @@ export default class MainScene extends Phaser.Scene {
                     || this.toast.anims.currentFrame.index === 2
                 const wtf = this.toast.anims.currentFrame.index === 3
                     || this.toast.anims.currentFrame.index === 7
-                // const win = false
-                // const wtf = true
                 this.toast.land()
-                // const win = this.toast.anims.currentFrame.index === 8 //BEFORE 100
-                // const win = this.toast.anims.currentFrame.index === 1 //100
-                // const win = this.toast.anims.currentFrame.index === 2 //AFTER 100
-
-                // const win = this.toast.anims.currentFrame.index === 3 //WTF RIGHT
-
-                // const win = this.toast.anims.currentFrame.index === 4 //BEFORE SPLAT
-                // const win = this.toast.anims.currentFrame.index === 5 //SUPER SPLAT
-                // const win = this.toast.anims.currentFrame.index === 6 //AFTER SPLAT
-
-                // const win = this.toast.anims.currentFrame.index === 7 //WTF LEFT
                 if (win) {
                     this.sound.play(WIN_SFX)
                     this.gameState = 1
-                    this.bobble = this.add.image(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, this.getWinBobble())
-                        .setScale(5, 5)
+                    this.bobble = this.getWinBobble()
                     this.time.addEvent({
                         delay: 4000,
                         callback:() => {
@@ -175,11 +163,9 @@ export default class MainScene extends Phaser.Scene {
                     this.gameState = 2
 
                     if (wtf) {
-                        this.bobble = this.add.image(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, this.getWtfBobble())
-                            .setScale(5, 5)
+                        this.bobble = this.getWtfBobble()
                     } else {
-                        this.bobble = this.add.sprite(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, FAIL_1)
-                            .play(FAIL_1_POPUP)
+                        this.bobble = this.getFailBobble()
                     }
                     this.time.addEvent({
                         delay: 4000,
@@ -195,8 +181,7 @@ export default class MainScene extends Phaser.Scene {
                 this.sound.play(SPLAT_SFX)
                 this.gameState = 3
 
-                this.bobble = this.add.image((a as Toast).x, DEFAULT_HEIGHT * 0.5, this.getSplatBobble())
-                        .setScale(5, 5)
+                this.bobble = this.getSplatBobble((a as Toast).x, DEFAULT_HEIGHT * 0.5)
                 this.time.addEvent({
                     delay: 4000,
                     callback:() => this.bobble?.destroy()
@@ -216,16 +201,22 @@ export default class MainScene extends Phaser.Scene {
         super.update(time, delta)
     }
 
-    getWinBobble: () => string = () => {
-        return this.WINNING_BOBBLES[Math.floor(Math.random() * this.WINNING_BOBBLES.length)]
+    getWinBobble: () => Phaser.GameObjects.Sprite = () => {
+        const bobble = this.WINNING_BOBBLES[Math.floor(Math.random() * this.WINNING_BOBBLES.length)]
+        return this.add.sprite(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, bobble.t)
+            .play(bobble.a)
     }
-    getFailBobble: () => string = () => {
-        return this.FAIL_BOBBLES[0]//[Math.floor(Math.random() * this.FAIL_BOBBLES.length)]
+    getFailBobble: () => Phaser.GameObjects.Sprite = () => {
+        const bobble = this.FAIL_BOBBLES[Math.floor(Math.random() * this.FAIL_BOBBLES.length)]
+        return this.add.sprite(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, bobble.t)
+            .play(bobble.a)
     }
-    getWtfBobble: () => string = () => {
-        return this.WTF_BOBBLES[Math.floor(Math.random() * this.WTF_BOBBLES.length)]
+    getWtfBobble: () => Phaser.GameObjects.Image = () => {
+        return this.add.image(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, this.WTF_BOBBLES[0])
+            .setScale(5, 5)
     }
-    getSplatBobble: () => string = () => {
-        return this.SPLAT_BOBBLES[Math.floor(Math.random() * this.SPLAT_BOBBLES.length)]
+    getSplatBobble: (x: number, y: number) => Phaser.GameObjects.Image = (x: number, y: number) => {
+        return this.add.image(x, y, this.SPLAT_BOBBLES[0])
+            .setScale(5, 5)
     }
 }

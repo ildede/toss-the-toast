@@ -1,0 +1,68 @@
+{
+    "anims": [
+        {
+            "key": "popupballoonwin3",
+            "type": "frames",
+            "repeat": 0,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin3"
+                },
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin4"
+                },
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin5"
+                },
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin6"
+                },
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin7"
+                },
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin8"
+                },
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin9"
+                },
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin10"
+                },
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin11"
+                },
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin12"
+                },
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin13"
+                },
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin14"
+                },
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin15"
+                },
+                {
+                    "key": "balloonwin3",
+                    "frame": "baloonswin16"
+                }
+            ]
+        }
+    ]
+}
