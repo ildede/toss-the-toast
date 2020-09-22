@@ -14,6 +14,8 @@ import {
     SPLAT_SFX,
     WIN_1,
     WIN_1_POPUP,
+    WIN_2,
+    WIN_2_POPUP,
     WIN_3,
     WIN_3_POPUP,
     WIN_SFX,
@@ -37,7 +39,7 @@ export default class MainScene extends Phaser.Scene {
 
     readonly START_X: number = DEFAULT_WIDTH * 0.15
     readonly START_Y: number = DEFAULT_HEIGHT * 0.55
-    readonly WINNING_BOBBLES: { a: string; t: string }[] = [{t:WIN_1,a:WIN_1_POPUP}, {t:WIN_3,a:WIN_3_POPUP}]
+    readonly WINNING_BOBBLES: { a: string; t: string }[] = [{t:WIN_1,a:WIN_1_POPUP}, {t:WIN_2,a:WIN_2_POPUP}, {t:WIN_3,a:WIN_3_POPUP}]
     readonly FAIL_BOBBLES: { a: string; t: string }[] = [{t:FAIL_1,a:FAIL_1_POPUP}, {t:FAIL_2,a:FAIL_2_POPUP}]
     readonly WTF_BOBBLES: { a: string; t: string }[] = [{t:WTF_1,a:WTF_1_POPUP}]
     readonly SPLAT_BOBBLES: { a: string; t: string }[] = [{t:SPLAT_1,a:SPLAT_1_POPUP}]

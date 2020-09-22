@@ -41,6 +41,8 @@ import {
     TOAST_UNLOCKED_ANIM,
     WIN_1,
     WIN_1_ANIM,
+    WIN_2,
+    WIN_2_ANIM,
     WIN_3,
     WIN_3_ANIM,
     WIN_SFX,
@@ -125,8 +127,8 @@ export default class PreloadScene extends Phaser.Scene {
 
         this.load.atlas(WIN_1, 'assets/balloons/balloonwin1/balloonwin1.png', 'assets/balloons/balloonwin1/balloonwin1_atlas.json')
         this.load.animation(WIN_1_ANIM, 'assets/balloons/balloonwin1/balloonwin1_anim.json')
-        // this.load.atlas(WIN_2, 'assets/balloons/balloonwin2/balloonwin2.png', 'assets/balloons/balloonwin2/balloonwin2_atlas.json')
-        // this.load.animation(WIN_1_ANIM, 'assets/balloons/balloonwin2/balloonwin2_anim.json')
+        this.load.atlas(WIN_2, 'assets/balloons/balloonwin2/balloonwin2.png', 'assets/balloons/balloonwin2/balloonwin2_atlas.json')
+        this.load.animation(WIN_2_ANIM, 'assets/balloons/balloonwin2/balloonwin2_anim.json')
         this.load.atlas(WIN_3, 'assets/balloons/balloonwin3/balloonwin3.png', 'assets/balloons/balloonwin3/balloonwin3_atlas.json')
         this.load.animation(WIN_3_ANIM, 'assets/balloons/balloonwin3/balloonwin3_anim.json')
         this.load.atlas(FAIL_1, 'assets/balloons/balloonfail1/balloonfail1.png', 'assets/balloons/balloonfail1/balloonfail1_atlas.json')

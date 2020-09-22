@@ -1,0 +1,190 @@
+{
+    "frames": [
+        {
+            "filename": "baloonswin2",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 4,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "baloonswin13",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 4,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "baloonswin3",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 610,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "baloonswin15",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 610,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "baloonswin4",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 1216,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "baloonswin5",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 1216,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "baloonswin6",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 1822,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "baloonswin7",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 1822,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "baloonswin8",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 2428,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "baloonswin9",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 2428,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "baloonswin10",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 3034,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "baloonswin11",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 3034,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "baloonswin12",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 3640,
+                "y": 4
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "baloonswin14",
+            "frame": {
+                "w": 600,
+                "h": 500,
+                "x": 3640,
+                "y": 510
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
