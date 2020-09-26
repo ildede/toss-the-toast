@@ -41,6 +41,7 @@ import {
     TOAST_PIZZA_ANIM,
     TOAST_UNLOCKED,
     TOAST_UNLOCKED_ANIM,
+    WHITEMASK,
     WIN_1,
     WIN_1_ANIM,
     WIN_2,
@@ -89,6 +90,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.on('complete', () => [loadingText, assetText].forEach(e => e.destroy()))
 
         this.load.image(BACKGROUND, 'assets/background.png')
+        this.load.image(WHITEMASK, 'assets/whitemask.png')
         this.load.image(PLATE, 'assets/plate.png')
         this.load.atlas(TOAST_UNLOCKED, 'assets/toastunlocked/toastunlocked.png', 'assets/toastunlocked/toastunlocked_atlas.json')
         this.load.animation(TOAST_UNLOCKED_ANIM, 'assets/toastunlocked/toastunlocked_anim.json')

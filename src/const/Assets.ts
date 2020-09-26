@@ -1,5 +1,6 @@
 export const BACKGROUND = 'background'
 export const PLATE = 'plate'
+export const WHITEMASK = 'whitemask'
 export const TOAST_UNLOCKED = 'toastunlocked'
 export const TOAST_UNLOCKED_ANIM = 'toastUnlockedAnim'
 export const TOAST_UNLOCKED_BOUNCE = 'bounceToastUnlocked'
