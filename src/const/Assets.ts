@@ -19,6 +19,8 @@ export const WIN_SFX = 'winSFX'
 export const SPLAT_SFX = 'splatSFX'
 export const WOOSH_SFX = 'wooshSFX'
 export const SLIP_SFX = 'slipSFX'
+export const CAT_SFX = 'catSFX'
+export const GLASS_SFX = 'glassSFX'
 export const IDLE_BGM = 'idleBGM'
 export const SPIN_BGM = 'spinBGM'
 

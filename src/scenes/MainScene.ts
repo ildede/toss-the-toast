@@ -1,11 +1,11 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
 import {
-    BACKGROUND,
+    BACKGROUND, CAT_SFX,
     FAIL_1,
     FAIL_1_POPUP,
     FAIL_2,
-    FAIL_2_POPUP,
+    FAIL_2_POPUP, GLASS_SFX,
     IDLE_BGM,
     LOST_SFX,
     PLATE,
@@ -85,7 +85,7 @@ export default class MainScene extends Phaser.Scene {
             new TossLimit(this, DEFAULT_WIDTH*0.74, DEFAULT_HEIGHT*0.78, PLATE, 200, 300),
             new TossLimit(this, DEFAULT_WIDTH*0.5, DEFAULT_HEIGHT*0.87, PLATE, DEFAULT_WIDTH*1.5, 50),
             new TossLimit(this, DEFAULT_WIDTH*0.08, DEFAULT_HEIGHT*0.5, PLATE, 50, DEFAULT_HEIGHT*2),
-            new TossLimit(this, DEFAULT_WIDTH * 0.9, DEFAULT_HEIGHT * 0.5, PLATE, 50, DEFAULT_HEIGHT * 2, false)
+            new TossLimit(this, DEFAULT_WIDTH * 0.9, DEFAULT_HEIGHT * 0.5, PLATE, 50, DEFAULT_HEIGHT * 2, false, [CAT_SFX, GLASS_SFX])
         ])
 
         this.toast = new Toast(this, data).setVisible(false)
@@ -187,7 +187,7 @@ export default class MainScene extends Phaser.Scene {
                 clearTimeout(this.timer);
 
                 const tossLimit = limit as TossLimit;
-                // this.sound.play(tossLimit.getSFX())
+                this.sound.play(tossLimit.getSFX())
                 this.gameState = 3
 
                 this.bobble = tossLimit.getSplatBobble((toast as Toast).x, DEFAULT_HEIGHT * 0.5)

@@ -4,11 +4,13 @@ import {
     ANGLE_POINTER,
     ARROW,
     BACKGROUND,
+    CAT_SFX,
     COLA,
     FAIL_1,
     FAIL_1_ANIM,
     FAIL_2,
     FAIL_2_ANIM,
+    GLASS_SFX,
     IDLE_BGM,
     LOST_SFX,
     MINUS,
@@ -122,6 +124,8 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.audio(WIN_SFX, 'music/winSFX.mp3')
         this.load.audio(WOOSH_SFX, 'music/wooshSFX.mp3')
         this.load.audio(SLIP_SFX, 'music/slipSFX.mp3')
+        this.load.audio(CAT_SFX, 'music/catSFX.mp3')
+        this.load.audio(GLASS_SFX, 'music/glassSFX.mp3')
         this.load.audio(IDLE_BGM, 'music/idleBGM.mp3')
         this.load.audio(SPIN_BGM, 'music/spinningBGM.mp3')
 
