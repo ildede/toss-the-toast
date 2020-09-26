@@ -85,7 +85,7 @@ export default class MainScene extends Phaser.Scene {
             new TossLimit(this, DEFAULT_WIDTH*0.74, DEFAULT_HEIGHT*0.78, PLATE, 200, 300),
             new TossLimit(this, DEFAULT_WIDTH*0.5, DEFAULT_HEIGHT*0.87, PLATE, DEFAULT_WIDTH*1.5, 50),
             new TossLimit(this, DEFAULT_WIDTH*0.08, DEFAULT_HEIGHT*0.5, PLATE, 50, DEFAULT_HEIGHT*2),
-            new TossLimit(this, DEFAULT_WIDTH * 0.9, DEFAULT_HEIGHT * 0.5, PLATE, 50, DEFAULT_HEIGHT * 2, false, [CAT_SFX, GLASS_SFX])
+            new TossLimit(this, DEFAULT_WIDTH * 1.055, DEFAULT_HEIGHT * 0.5, PLATE, 50, DEFAULT_HEIGHT * 2, false, [CAT_SFX, GLASS_SFX])
         ])
 
         this.toast = new Toast(this, data).setVisible(false)
@@ -190,7 +190,7 @@ export default class MainScene extends Phaser.Scene {
                 this.sound.play(tossLimit.getSFX())
                 this.gameState = 3
 
-                this.bobble = tossLimit.getSplatBobble((toast as Toast).x, DEFAULT_HEIGHT * 0.5)
+                this.bobble = tossLimit.getSplatBobble(Math.min((toast as Toast).x, DEFAULT_WIDTH*0.85), DEFAULT_HEIGHT * 0.5)
                 this.time.addEvent({
                     delay: 4000,
                     callback:() => this.bobble?.destroy()
