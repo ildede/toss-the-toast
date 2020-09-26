@@ -41,7 +41,6 @@ export default class MainScene extends Phaser.Scene {
     readonly WINNING_BOBBLES: { a: string; t: string }[] = [{t:WIN_1,a:WIN_1_POPUP}, {t:WIN_2,a:WIN_2_POPUP}, {t:WIN_3,a:WIN_3_POPUP}]
     readonly FAIL_BOBBLES: { a: string; t: string }[] = [{t:FAIL_1,a:FAIL_1_POPUP}, {t:FAIL_2,a:FAIL_2_POPUP}]
     readonly WTF_BOBBLES: { a: string; t: string }[] = [{t:WTF_1,a:WTF_1_POPUP}]
-    readonly SPLAT_BOBBLES: { a: string; t: string }[] = [{t:SPLAT_1,a:SPLAT_1_POPUP}]
 
     private gameState = -1
     private startingPoint!: Phaser.GameObjects.Image
@@ -86,7 +85,7 @@ export default class MainScene extends Phaser.Scene {
             new TossLimit(this, DEFAULT_WIDTH*0.74, DEFAULT_HEIGHT*0.78, PLATE, 200, 300),
             new TossLimit(this, DEFAULT_WIDTH*0.5, DEFAULT_HEIGHT*0.87, PLATE, DEFAULT_WIDTH*1.5, 50),
             new TossLimit(this, DEFAULT_WIDTH*0.08, DEFAULT_HEIGHT*0.5, PLATE, 50, DEFAULT_HEIGHT*2),
-            new TossLimit(this, DEFAULT_WIDTH * 0.9, DEFAULT_HEIGHT * 0.5, PLATE, 50, DEFAULT_HEIGHT * 2)
+            new TossLimit(this, DEFAULT_WIDTH * 0.9, DEFAULT_HEIGHT * 0.5, PLATE, 50, DEFAULT_HEIGHT * 2, false)
         ])
 
         this.toast = new Toast(this, data).setVisible(false)
@@ -182,14 +181,16 @@ export default class MainScene extends Phaser.Scene {
                 }
             }
         })
-        this.physics.world.collide(this.toast, this.staticGroup, (a: GameObjectWithBody, b) => {
+        this.physics.world.collide(this.toast, this.staticGroup, (toast: GameObjectWithBody, limit: GameObjectWithBody) => {
             if (this.gameState === 0) {
-                (a as Toast).splat()
-                clearTimeout(this.timer)
-                this.sound.play(SPLAT_SFX)
+                (toast as Toast).splat()
+                clearTimeout(this.timer);
+
+                const tossLimit = limit as TossLimit;
+                // this.sound.play(tossLimit.getSFX())
                 this.gameState = 3
 
-                this.bobble = this.getSplatBobble((a as Toast).x, DEFAULT_HEIGHT * 0.5)
+                this.bobble = tossLimit.getSplatBobble((toast as Toast).x, DEFAULT_HEIGHT * 0.5)
                 this.time.addEvent({
                     delay: 4000,
                     callback:() => this.bobble?.destroy()
@@ -222,11 +223,6 @@ export default class MainScene extends Phaser.Scene {
     getWtfBobble: () => Phaser.GameObjects.Sprite = () => {
         const bobble = this.WTF_BOBBLES[0]
         return this.add.sprite(DEFAULT_WIDTH * 0.8, DEFAULT_HEIGHT * 0.4, bobble.t)
-            .play(bobble.a)
-    }
-    getSplatBobble: (x: number, y: number) => Phaser.GameObjects.Sprite = (x: number, y: number) => {
-        const bobble = this.SPLAT_BOBBLES[0]
-        return this.add.sprite(x, y, bobble.t)
             .play(bobble.a)
     }
 }
