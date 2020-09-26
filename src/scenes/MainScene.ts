@@ -154,7 +154,7 @@ export default class MainScene extends Phaser.Scene {
                     this.gameState = 1
                     this.bobble = this.getWinBobble()
                     this.time.addEvent({
-                        delay: 4000,
+                        delay: 2000,
                         callback:() => {
                             this.bobble?.destroy()
                             const unlocked = new UnlockedNewToast(this, DEFAULT_WIDTH/2, DEFAULT_HEIGHT/2).setInteractive({ useHandCursor: true })
@@ -175,7 +175,7 @@ export default class MainScene extends Phaser.Scene {
                         this.bobble = this.getFailBobble()
                     }
                     this.time.addEvent({
-                        delay: 4000,
+                        delay: 2000,
                         callback:() => this.bobble?.destroy()
                     })
                 }
@@ -192,7 +192,7 @@ export default class MainScene extends Phaser.Scene {
 
                 this.bobble = tossLimit.getSplatBobble(Math.min((toast as Toast).x, DEFAULT_WIDTH*0.85), DEFAULT_HEIGHT * 0.5)
                 this.time.addEvent({
-                    delay: 4000,
+                    delay: 2000,
                     callback:() => this.bobble?.destroy()
                 })
             }
