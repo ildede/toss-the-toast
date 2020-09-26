@@ -8,6 +8,7 @@ import {
     FAIL_2_POPUP,
     IDLE_BGM,
     LOST_SFX,
+    PLATE,
     SLIP_SFX,
     SPLAT_1,
     SPLAT_1_POPUP,
@@ -25,13 +26,11 @@ import {
 import Toast from '~/objects/Toast'
 import {SPINNING_SCENE} from '~/scenes/SpinningScene'
 import Plate from '~/objects/Plate'
-import BarCounter from '~/objects/BarCounter'
-import Floor from '~/objects/Floor'
-import Wall from '~/objects/Wall'
 import UnlockedNewToast from "~/objects/UnlockedNewToast";
 import {SPLASH_SCENE} from "~/scenes/SplashScene";
 import {BGM_VOLUME, TIME_TO_ENTER_SPEED_EFFECT} from "~/const/Config";
 import AngleGauge from "~/objects/AngleGouge";
+import TossLimit from "~/objects/TossLimit";
 import GameObjectWithBody = Phaser.Types.Physics.Arcade.GameObjectWithBody;
 
 export const MAIN_SCENE = 'MainScene'
@@ -84,9 +83,10 @@ export default class MainScene extends Phaser.Scene {
 
         this.plate = new Plate(this)
         this.staticGroup = this.physics.add.staticGroup([
-            new BarCounter(this),
-            new Floor(this),
-            new Wall(this)
+            new TossLimit(this, DEFAULT_WIDTH*0.74, DEFAULT_HEIGHT*0.78, PLATE, 200, 300),
+            new TossLimit(this, DEFAULT_WIDTH*0.5, DEFAULT_HEIGHT*0.87, PLATE, DEFAULT_WIDTH*1.5, 50),
+            new TossLimit(this, DEFAULT_WIDTH*0.08, DEFAULT_HEIGHT*0.5, PLATE, 50, DEFAULT_HEIGHT*2),
+            new TossLimit(this, DEFAULT_WIDTH * 0.9, DEFAULT_HEIGHT * 0.5, PLATE, 50, DEFAULT_HEIGHT * 2)
         ])
 
         this.toast = new Toast(this, data).setVisible(false)
@@ -182,7 +182,7 @@ export default class MainScene extends Phaser.Scene {
                 }
             }
         })
-        this.physics.world.collide(this.toast, this.staticGroup, (a: GameObjectWithBody) => {
+        this.physics.world.collide(this.toast, this.staticGroup, (a: GameObjectWithBody, b) => {
             if (this.gameState === 0) {
                 (a as Toast).splat()
                 clearTimeout(this.timer)
