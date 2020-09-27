@@ -145,6 +145,9 @@ export default class MainScene extends Phaser.Scene {
             this.cameraFilter.angle -= 1
             this.cameraFilter.radius += 8
         }
+        if (this.gameState === 1 && this.toast.unlimitedSpinning) {
+            this.toast.anims.msPerFrame -= 0.6
+        }
         this.physics.overlap(this.plate, this.toast, () => {
             if (this.gameState === 0) {
                 const win = this.toast.anims.currentFrame.index === 8
