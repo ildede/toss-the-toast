@@ -53,6 +53,7 @@ export default class MainScene extends Phaser.Scene {
     private toastUnlocked = 1;
     private unitScoreValue!: Phaser.GameObjects.Image;
     private tensScoreValue!: Phaser.GameObjects.Image;
+    private cameraFilter: any;
 
     constructor() {
         super({ key: MAIN_SCENE })
@@ -141,6 +142,10 @@ export default class MainScene extends Phaser.Scene {
 
     update(time: number, delta: number) {
 
+        if (this.cameraFilter) {
+            this.cameraFilter.angle -= 1
+            this.cameraFilter.radius += 8
+        }
         this.physics.overlap(this.plate, this.toast, () => {
             if (this.gameState === 0) {
                 const win = this.toast.anims.currentFrame.index === 8
@@ -149,7 +154,20 @@ export default class MainScene extends Phaser.Scene {
                 const wtf = this.toast.anims.currentFrame.index === 3
                     || this.toast.anims.currentFrame.index === 7
                 this.toast.land()
-                if (win) {
+                if (this.toast.unlimitedSpinning) {
+                    this.sound.play(WIN_SFX)
+                    this.gameState = 1
+                    this.time.addEvent({
+                        delay: 2000,
+                        callback:() => {
+                            const customPipeline = this.plugins.get('rexswirlpipelineplugin')['add'](this, 'Swirl');
+                            this.cameras.main.setRenderToTexture(customPipeline);
+                            this.cameraFilter = customPipeline;
+                            this.cameraFilter.setCenter(this.toast.x, this.toast.y)
+                        }
+                    })
+
+                } else if (win) {
                     this.sound.play(WIN_SFX)
                     this.gameState = 1
                     this.bobble = this.getWinBobble()
@@ -190,7 +208,11 @@ export default class MainScene extends Phaser.Scene {
                 this.sound.play(tossLimit.getSFX())
                 this.gameState = 3
 
-                this.bobble = tossLimit.getSplatBobble(Math.min((toast as Toast).x, DEFAULT_WIDTH*0.85), DEFAULT_HEIGHT * 0.5)
+                if ((toast as Toast).unlimitedSpinning) {
+                    this.bobble = this.getWtfBobble()
+                } else {
+                    this.bobble = tossLimit.getSplatBobble(Math.min((toast as Toast).x, DEFAULT_WIDTH*0.85), DEFAULT_HEIGHT * 0.5)
+                }
                 this.time.addEvent({
                     delay: 2000,
                     callback:() => this.bobble?.destroy()

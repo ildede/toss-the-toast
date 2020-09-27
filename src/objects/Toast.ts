@@ -5,7 +5,7 @@ import {DEFAULT_TOSS_SPEED, TOAST_SCALE} from "~/const/Config";
 export default class Toast extends Phaser.Physics.Arcade.Sprite {
     readonly animName: string;
     readonly textureName: string;
-    private readonly unlimitedSpinning: boolean;
+    readonly unlimitedSpinning: boolean;
 
     constructor(scene: MainScene, data: { texture: string; anim: string, unlimitedSpinning: boolean }) {
         super(scene, scene.START_X, scene.START_Y, data.texture)

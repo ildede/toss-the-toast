@@ -86,6 +86,9 @@ export default class PreloadScene extends Phaser.Scene {
         const assetText = this.make.text(defaultConfig(width/2, height/2+20))
         assetText.setOrigin(0.5, 0.5)
 
+        const pluginUrl = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexswirlpipelineplugin.min.js';
+        this.load.plugin('rexswirlpipelineplugin', pluginUrl, true);
+
         this.load.on('fileprogress', file => assetText.setText('Loading asset: ' + file.key))
         this.load.on('complete', () => [loadingText, assetText].forEach(e => e.destroy()))
 
