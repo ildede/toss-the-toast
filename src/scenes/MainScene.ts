@@ -1,18 +1,17 @@
 import Phaser from 'phaser'
 import {DEFAULT_HEIGHT, DEFAULT_WIDTH} from '~/main'
 import {
-    BACKGROUND, CAT_SFX,
+    BACKGROUND,
+    CAT_SFX,
     FAIL_1,
     FAIL_1_POPUP,
     FAIL_2,
-    FAIL_2_POPUP, GLASS_SFX,
+    FAIL_2_POPUP,
+    GLASS_SFX,
     IDLE_BGM,
     LOST_SFX,
     PLATE,
     SLIP_SFX,
-    SPLAT_1,
-    SPLAT_1_POPUP,
-    SPLAT_SFX,
     WIN_1,
     WIN_1_POPUP,
     WIN_2,
@@ -160,10 +159,19 @@ export default class MainScene extends Phaser.Scene {
                     this.time.addEvent({
                         delay: 2000,
                         callback:() => {
-                            const customPipeline = this.plugins.get('rexswirlpipelineplugin')['add'](this, 'Swirl');
-                            this.cameras.main.setRenderToTexture(customPipeline);
-                            this.cameraFilter = customPipeline;
+                            if (!this.cameraFilter) {
+                                this.cameraFilter = this.plugins.get('rexswirlpipelineplugin')['add'](this, 'Swirl');
+                            } else {
+                                this.cameraFilter.angle = 0
+                                this.cameraFilter.radius = 0
+                            }
+                            this.cameras.main.setRenderToTexture(this.cameraFilter);
                             this.cameraFilter.setCenter(this.toast.x, this.toast.y)
+                            setTimeout(() => {
+                                this.cameras.main.fadeOut(500)
+                                setTimeout(() => this.scene.start(SPLASH_SCENE, { toastCount: 1 }), 1000)
+                            }, 2000)
+
                         }
                     })
 
