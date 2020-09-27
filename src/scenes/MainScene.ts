@@ -58,7 +58,7 @@ export default class MainScene extends Phaser.Scene {
         super({ key: MAIN_SCENE })
     }
 
-    create(data: { texture: string, anim: string, toastCount: number }) {
+    create(data: { texture: string, anim: string, toastCount: number, unlimitedSpinning: boolean }) {
         this.toastUnlocked = data.toastCount
         if (this.gameState === 1) this.gameState = -1
 

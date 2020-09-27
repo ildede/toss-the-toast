@@ -32,9 +32,9 @@ export default class SplashScene extends Phaser.Scene {
 
     create(data: { toastCount: number }) {
         let toastUnlocked = data.toastCount || 1
-        if (toastUnlocked > 7) {
+        // if (toastUnlocked > 7) {
             toastUnlocked = 7
-        }
+        // }
 
         this.anims.create({key: 'splashGif', frames: this.anims.generateFrameNames(SPLASH_SCREEN, { start: 0, end: 87 }), repeat: -1, frameRate: 6})
         this.add.sprite(DEFAULT_WIDTH/2, DEFAULT_HEIGHT*0.4, SPLASH_SCREEN).setScale(2,2).play('splashGif')
@@ -85,7 +85,7 @@ export default class SplashScene extends Phaser.Scene {
                 ])
                 break
             case 7:
-                toasts.add(new SplashSpinningToast(this, DEFAULT_WIDTH*0.5, DEFAULT_HEIGHT*0.8, TOAST_CAT, TOAST_CAT_SPIN).setInteractive({ useHandCursor: true }))
+                toasts.add(new SplashSpinningToast(this, DEFAULT_WIDTH*0.5, DEFAULT_HEIGHT*0.8, TOAST_CAT, TOAST_CAT_SPIN, true).setInteractive({ useHandCursor: true }))
                 break
             default:
                 toasts.addMultiple([
@@ -100,7 +100,7 @@ export default class SplashScene extends Phaser.Scene {
             this.time.addEvent({
                 delay: 100,
                 callback: () => {
-                    this.scene.start(MAIN_SCENE, { texture: t.TEXTURE, anim: t.ANIM, toastCount: toastUnlocked })
+                    this.scene.start(MAIN_SCENE, { texture: t.TEXTURE, anim: t.ANIM, toastCount: toastUnlocked, unlimitedSpinning: t.HAS_CAT })
                 }
             })
         }))
