@@ -1,7 +1,6 @@
 import Phaser from 'phaser'
 import MainScene from '~/scenes/MainScene'
 import {DEFAULT_TOSS_SPEED, TOAST_SCALE} from "~/const/Config";
-import AngleGauge from "~/objects/AngleGouge";
 
 export default class Toast extends Phaser.Physics.Arcade.Sprite {
     readonly animName: string;
